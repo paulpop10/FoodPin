@@ -29,5 +29,10 @@ namespace FoodPin
         {
             TypeLabel.Text = typeLabel;
         }
+
+        public void SetCheckmarkImageView(UIImage checkmarkImage)
+        {
+            CheckmarkImageView.Image = checkmarkImage;
+        }
     }
 }
