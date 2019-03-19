@@ -213,11 +213,18 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="RestaurantTableViewController_.cs">
+    <Compile Include="RestaurantTableViewController.cs">
       <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="RestaurantTableViewController_.designer.cs">
-      <DependentUpon>RestaurantTableViewController_.cs</DependentUpon>
+    <Compile Include="RestaurantTableViewController.designer.cs">
+      <DependentUpon>RestaurantTableViewController.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="RestaurantTableViewCell.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="RestaurantTableViewCell.designer.cs">
+      <DependentUpon>RestaurantTableViewCell.cs</DependentUpon>
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
   </ItemGroup>
