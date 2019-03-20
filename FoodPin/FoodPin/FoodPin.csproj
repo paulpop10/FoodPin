@@ -176,6 +176,14 @@
     <ImageAsset Include="Assets.xcassets\wafflewolf.imageset\wafflewolf%403x.jpg" />
     <ImageAsset Include="Assets.xcassets\CheckmarkImageView.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\CheckmarkImageView.imageset\heart-tick.pdf" />
+    <ImageAsset Include="Assets.xcassets\delete.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\delete.imageset\delete.pdf" />
+    <ImageAsset Include="Assets.xcassets\share.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\share.imageset\share.pdf" />
+    <ImageAsset Include="Assets.xcassets\tick.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\tick.imageset\tick.pdf" />
+    <ImageAsset Include="Assets.xcassets\undo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\undo.imageset\undo.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -202,6 +210,11 @@
     <Folder Include="Assets.xcassets\upstate.imageset\" />
     <Folder Include="Assets.xcassets\wafflewolf.imageset\" />
     <Folder Include="Assets.xcassets\CheckmarkImageView.imageset\" />
+    <Folder Include="Assets.xcassets\heartIcon.imageset\" />
+    <Folder Include="Assets.xcassets\delete.imageset\" />
+    <Folder Include="Assets.xcassets\share.imageset\" />
+    <Folder Include="Assets.xcassets\tick.imageset\" />
+    <Folder Include="Assets.xcassets\undo.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

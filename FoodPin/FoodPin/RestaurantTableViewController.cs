@@ -59,7 +59,7 @@ namespace FoodPin
             cell.SetName(_restaurantNames[indexPath.Row]);
             cell.SetImage(UIImage.FromBundle(_restaurantImages[indexPath.Row]));
             cell.SetLocation(_restaurantLocations[indexPath.Row]);
-            cell.SetType(_restaurantTypes[indexPath.Row]);         
+            cell.SetType(_restaurantTypes[indexPath.Row]);
             CheckIn(cell, _restaurantIsVisited[indexPath.Row]);
             return cell;
         }
@@ -73,41 +73,15 @@ namespace FoodPin
         {
             return _restaurantNames.Count;
         }
-              
-        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-        {         
-            var optionMenu = UIAlertController.Create(null, "What do you want to do?", UIAlertControllerStyle.ActionSheet);
-            var popoverController = optionMenu.PopoverPresentationController;
-            if (popoverController != null)
-            {
-                var cell = tableView.CellAt(indexPath);
-                if (cell != null)
-                {
-                    popoverController.SourceView = cell;
-                    popoverController.SourceRect = cell.Bounds;
-                }
-            }
 
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            var optionMenu = UIAlertController.Create(null, "What do you want to do?", UIAlertControllerStyle.ActionSheet);
+            SetUpPopover(optionMenu, tableView.CellAt(indexPath));
             var cancelAction = UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, null);
             optionMenu.AddAction(cancelAction);
-            var callAction = UIAlertAction.Create("Call " + "123-000-" + indexPath.Row, UIAlertActionStyle.Default, CallActionHandler);
+            var callAction = UIAlertAction.Create("Call " + "123-000-" + indexPath.Row, UIAlertActionStyle.Default, OnCallActionSelected);
             optionMenu.AddAction(callAction);
-            var checkInAlertActionTitle = _restaurantIsVisited[indexPath.Row] ? "Undo Check In" : "Check In";
-            var checkInAction = UIAlertAction.Create(
-            checkInAlertActionTitle, 
-            UIAlertActionStyle.Default,
-            r =>
-            {
-                var cell = tableView.CellAt(indexPath) as RestaurantTableViewCell;
-                if (cell != null)
-                {
-                    _restaurantIsVisited[indexPath.Row] = !_restaurantIsVisited[indexPath.Row];
-                    CheckIn(cell, _restaurantIsVisited[indexPath.Row]);                  
-                }
-            });
-
-            optionMenu.AddAction(checkInAction);
-
             PresentViewController(optionMenu, true, null);
             tableView.DeselectRow(indexPath, false);
         }
@@ -117,7 +91,81 @@ namespace FoodPin
             TableView.CellLayoutMarginsFollowReadableWidth = true;
         }
 
-        private void CallActionHandler(UIAlertAction obj)
+        public override UISwipeActionsConfiguration GetTrailingSwipeActionsConfiguration(UITableView tableView, NSIndexPath indexPath)
+        {
+            var deleteAction = UIContextualAction.FromContextualActionStyle(
+             UIContextualActionStyle.Destructive,
+             "Delete",
+             (Delete, sourceView, completionHndler) =>
+             {
+                 _restaurantNames.RemoveAt(indexPath.Row);
+                 _restaurantLocations.RemoveAt(indexPath.Row);
+                 _restaurantTypes.RemoveAt(indexPath.Row);
+                 _restaurantIsVisited.RemoveAt(indexPath.Row);
+                 _restaurantImages.RemoveAt(indexPath.Row);
+
+                 tableView.DeleteRows(new[] { indexPath }, UITableViewRowAnimation.Fade);
+
+                 completionHndler(true);
+             });
+
+            var shareAction = UIContextualAction.FromContextualActionStyle(
+            UIContextualActionStyle.Normal,
+            "Share",
+            (Share, sourceView, completionHandler)
+            =>
+            {
+                var defaultText = "Just checking in at " + _restaurantNames[indexPath.Row];
+                var activityitems = new NSObject[] { };
+                var imageToLoad = UIImage.FromBundle(_restaurantImages[indexPath.Row]);
+                if (imageToLoad != null)
+                {
+                    activityitems = new NSObject[] { FromObject(new NSString(defaultText)), imageToLoad };
+                }
+                else
+                {
+                    activityitems = new NSObject[] { FromObject(new NSString(defaultText)) };
+                }
+
+                var activityController = new UIActivityViewController(activityitems, null);
+                SetUpPopover(activityController, tableView.CellAt(indexPath));
+                PresentViewController(activityController, true, null);
+                completionHandler(true);
+            });
+
+            deleteAction.BackgroundColor = UIColor.FromRGB(231, 76, 60);
+            deleteAction.Image = UIImage.FromBundle("delete");
+
+            shareAction.BackgroundColor = UIColor.FromRGB(254, 149, 38);
+            shareAction.Image = UIImage.FromBundle("share");
+            var swipeConfiguration = UISwipeActionsConfiguration.FromActions(new UIContextualAction[] { deleteAction, shareAction });
+
+            return swipeConfiguration;
+        }
+
+        public override UISwipeActionsConfiguration GetLeadingSwipeActionsConfiguration(UITableView tableView, NSIndexPath indexPath)
+        {
+            var checkInAlertActionTitle = _restaurantIsVisited[indexPath.Row] ? "Undo Check In" : "Check In";
+            var checkInAction = UIContextualAction.FromContextualActionStyle(
+                UIContextualActionStyle.Normal,
+                checkInAlertActionTitle,
+                (Check_in, sourceView, completionHandler)
+                =>
+                {
+                    var cell = tableView.CellAt(indexPath) as RestaurantTableViewCell;
+                    if (cell != null)
+                    {
+                        _restaurantIsVisited[indexPath.Row] = !_restaurantIsVisited[indexPath.Row];
+                        CheckIn(cell, _restaurantIsVisited[indexPath.Row]);
+                    }
+                });
+            checkInAction.BackgroundColor = UIColor.FromRGB(0, 190, 0);
+            checkInAction.Image = _restaurantIsVisited[indexPath.Row] ? UIImage.FromBundle("undo") : UIImage.FromBundle("tick");         
+            var swipeconfiguration = UISwipeActionsConfiguration.FromActions(new UIContextualAction[] { checkInAction });
+            return swipeconfiguration;
+        }
+
+        private void OnCallActionSelected(UIAlertAction obj)
         {
             var alertmessage = UIAlertController.Create("Service Unavailable", "Sorry, the call feature is not available yet.Please retry later.", UIAlertControllerStyle.Alert);
             alertmessage.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
@@ -128,11 +176,25 @@ namespace FoodPin
         {
             if (check)
             {
-                cell.SetCheckmarkImageView(UIImage.FromBundle("CheckmarkImageView"));
+                var checkMarkImage = UIImage.FromBundle("CheckmarkImageView");
+                cell.AccessoryView = new UIImageView(checkMarkImage);              
             }
             else
             {
-                cell.SetCheckmarkImageView(null);
+                cell.AccessoryView = null;
+            }
+        }
+
+        private void SetUpPopover(UIViewController uiViewController, UITableViewCell cell)
+        {
+            var popoverController = uiViewController.PopoverPresentationController;
+            if (popoverController != null)
+            {
+                if (cell != null)
+                {
+                    popoverController.SourceView = cell;
+                    popoverController.SourceRect = cell.Bounds;
+                }
             }
         }
     }
