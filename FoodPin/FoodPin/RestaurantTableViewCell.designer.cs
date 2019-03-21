@@ -16,10 +16,6 @@ namespace FoodPin
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView CheckmarkImageView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LocationLabel { get; set; }
 
         [Outlet]
@@ -36,11 +32,6 @@ namespace FoodPin
 
         void ReleaseDesignerOutlets ()
         {
-            if (CheckmarkImageView != null) {
-                CheckmarkImageView.Dispose ();
-                CheckmarkImageView = null;
-            }
-
             if (LocationLabel != null) {
                 LocationLabel.Dispose ();
                 LocationLabel = null;

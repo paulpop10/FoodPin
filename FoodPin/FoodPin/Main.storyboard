@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NgJ-v1-WEX">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Qv-nY-VVd">
-                                            <rect key="frame" x="22" y="8" width="282" height="65.5"/>
+                                            <rect key="frame" x="22" y="11" width="282" height="60"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5ut-KS-KgB">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -41,35 +41,28 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="P9b-mF-fSh">
-                                                    <rect key="frame" x="75" y="0.0" width="162" height="58.5"/>
+                                                    <rect key="frame" x="75" y="0.0" width="207" height="58.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0v6-YM-h9A">
-                                                            <rect key="frame" x="0.0" y="0.0" width="162" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="207" height="20.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mH0-p6-Rq0">
-                                                            <rect key="frame" x="0.0" y="21.5" width="162" height="18"/>
+                                                            <rect key="frame" x="0.0" y="21.5" width="207" height="18"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grA-7o-tmx">
-                                                            <rect key="frame" x="0.0" y="40.5" width="162" height="18"/>
+                                                            <rect key="frame" x="0.0" y="40.5" width="207" height="18"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xYe-BT-BpQ">
-                                                    <rect key="frame" x="252" y="0.0" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="Uuo-n4-8kj"/>
-                                                        <constraint firstAttribute="height" constant="30" id="suB-h7-6jq"/>
-                                                    </constraints>
-                                                </imageView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -81,7 +74,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="CheckmarkImageView" destination="xYe-BT-BpQ" id="name-outlet-xYe-BT-BpQ"/>
                                     <outlet property="LocationLabel" destination="mH0-p6-Rq0" id="name-outlet-mH0-p6-Rq0"/>
                                     <outlet property="NameLabel" destination="0v6-YM-h9A" id="name-outlet-0v6-YM-h9A"/>
                                     <outlet property="ThumbnailImageView" destination="5ut-KS-KgB" id="name-outlet-5ut-KS-KgB"/>
@@ -97,7 +89,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5f-Qu-vb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233.3333" y="-181.7935"/>
+            <point key="canvasLocation" x="233.33330000000001" y="-181.79349999999999"/>
         </scene>
     </scenes>
 </document>
