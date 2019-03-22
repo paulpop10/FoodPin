@@ -74,21 +74,13 @@ namespace FoodPin
             return _restaurantNames.Count;
         }
 
-        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-        {
-            var optionMenu = UIAlertController.Create(null, "What do you want to do?", UIAlertControllerStyle.ActionSheet);
-            SetUpPopover(optionMenu, tableView.CellAt(indexPath));
-            var cancelAction = UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, null);
-            optionMenu.AddAction(cancelAction);
-            var callAction = UIAlertAction.Create("Call " + "123-000-" + indexPath.Row, UIAlertActionStyle.Default, OnCallActionSelected);
-            optionMenu.AddAction(callAction);
-            PresentViewController(optionMenu, true, null);
-            tableView.DeselectRow(indexPath, false);
-        }
-
         public override void ViewDidLoad()
         {
             TableView.CellLayoutMarginsFollowReadableWidth = true;
+            if (NavigationController != null)
+            {
+                NavigationController.NavigationBar.PrefersLargeTitles = true;
+            }         
         }
 
         public override UISwipeActionsConfiguration GetTrailingSwipeActionsConfiguration(UITableView tableView, NSIndexPath indexPath)
@@ -163,6 +155,22 @@ namespace FoodPin
             checkInAction.Image = _restaurantIsVisited[indexPath.Row] ? UIImage.FromBundle("undo") : UIImage.FromBundle("tick");         
             var swipeconfiguration = UISwipeActionsConfiguration.FromActions(new UIContextualAction[] { checkInAction });
             return swipeconfiguration;
+        }
+
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.Identifier == "showRestaurantDetail")
+            {
+                var indexpath = TableView.IndexPathForSelectedRow;
+                if (indexpath != null)
+                {
+                    var destinationController = segue.DestinationViewController as RestaurantDetailViewController;
+                    destinationController.RestaurantImageName = _restaurantImages[indexpath.Row];
+                    destinationController.RestaurantName = _restaurantNames[indexpath.Row];
+                    destinationController.RestaurantType = _restaurantTypes[indexpath.Row];
+                    destinationController.RestaurantLocation = _restaurantLocations[indexpath.Row];
+                }
+            }
         }
 
         private void OnCallActionSelected(UIAlertAction obj)
