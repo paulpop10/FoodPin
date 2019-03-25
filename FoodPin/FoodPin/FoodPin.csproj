@@ -215,42 +215,52 @@
     <Folder Include="Assets.xcassets\share.imageset\" />
     <Folder Include="Assets.xcassets\tick.imageset\" />
     <Folder Include="Assets.xcassets\undo.imageset\" />
+    <Folder Include="Controller\" />
+    <Folder Include="Model\" />
+    <Folder Include="View\" />
+    <Folder Include="Storyboard\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="Storyboard\Main.storyboard" />
+    <InterfaceDefinition Include="Storyboard\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <None Include="packages.config" />
     <None Include="Settings.StyleCop" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="RestaurantTableViewController.cs">
+    <Compile Include="Controller\RestaurantDetailViewController.cs">
       <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="RestaurantTableViewController.designer.cs">
-      <DependentUpon>RestaurantTableViewController.cs</DependentUpon>
-      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
-    </Compile>
-    <Compile Include="RestaurantTableViewCell.cs">
-      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
-    </Compile>
-    <Compile Include="RestaurantTableViewCell.designer.cs">
-      <DependentUpon>RestaurantTableViewCell.cs</DependentUpon>
-      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
-    </Compile>
-    <Compile Include="RestaurantDetailViewController.cs">
-      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
-    </Compile>
-    <Compile Include="RestaurantDetailViewController.designer.cs">
+    <Compile Include="Controller\RestaurantDetailViewController.designer.cs">
       <DependentUpon>RestaurantDetailViewController.cs</DependentUpon>
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Controller\RestaurantTableViewController.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\RestaurantTableViewController.designer.cs">
+      <DependentUpon>RestaurantTableViewController.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\RestaurantTableViewCell.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\RestaurantTableViewCell.designer.cs">
+      <DependentUpon>RestaurantTableViewCell.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Model\Restaurant.cs" />
+    <Compile Include="Extensions\RestaurantExtensions.cs" />
+    <Compile Include="Controller\RestaurantTableViewController.DataSourceInterface.cs">
+      <DependentUpon>RestaurantTableViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
+  <Import Project="..\packages\StyleCop.MSBuild.6.0.0\build\StyleCop.MSBuild.targets" Condition="Exists('..\packages\StyleCop.MSBuild.6.0.0\build\StyleCop.MSBuild.targets')" />
 </Project>
