@@ -6,7 +6,7 @@ using UIKit;
 namespace FoodPin
 {
     public partial class RestaurantTableViewController
-    {
+    {       
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var cell = tableView.DequeueReusableCell(CellIdentifier) as RestaurantTableViewCell;

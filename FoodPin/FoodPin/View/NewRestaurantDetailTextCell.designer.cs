@@ -11,11 +11,19 @@ using UIKit;
 
 namespace FoodPin
 {
-    [Register ("RestaurantDetailViewController")]
-    partial class RestaurantDetailViewController
+    [Register ("NewRestaurantDetailTextCell")]
+    partial class NewRestaurantDetailTextCell
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel DescriptionLabel { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (DescriptionLabel != null) {
+                DescriptionLabel.Dispose ();
+                DescriptionLabel = null;
+            }
         }
     }
 }
