@@ -18,9 +18,7 @@ namespace FoodPin
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // Override point for customization after application launch.
-            //// If not required for your application you can safely delete this method
-
+            SetBackButtonOnNavigationBar();
             return true;
         }
 
@@ -54,5 +52,13 @@ namespace FoodPin
         {
             // Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
         }
+
+        private void SetBackButtonOnNavigationBar()
+        {
+            var backButtonImage = UIImage.FromBundle("back");
+            UINavigationBar.Appearance.BackIndicatorImage = backButtonImage;
+            UINavigationBar.Appearance.BackIndicatorTransitionMaskImage = backButtonImage;
+        }
+
     }
 }

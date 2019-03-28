@@ -42,6 +42,7 @@ namespace FoodPin
         public void SetTypeLabel(string type)
         {
             TypeLabel.Text = type;
+            TypeLabel.Lines = 0;
             TypeLabel.Layer.CornerRadius = 5;
             TypeLabel.Layer.MasksToBounds = true;
         }

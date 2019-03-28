@@ -43,9 +43,15 @@ namespace FoodPin
         public override void ViewDidLoad()
         {
             TableView.CellLayoutMarginsFollowReadableWidth = true;
+            SetNavigationController();
+            SetCustomFontForNavigationBar();
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
             if (NavigationController != null)
             {
-                NavigationController.NavigationBar.PrefersLargeTitles = true;
+                NavigationController.HidesBarsOnSwipe = true;
             }
         }
         #endregion
@@ -107,6 +113,7 @@ namespace FoodPin
             var swipeconfiguration = UISwipeActionsConfiguration.FromActions(new UIContextualAction[] { checkInAction });
             return swipeconfiguration;
         }
+
         #endregion
         #region Navigation
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
@@ -139,6 +146,33 @@ namespace FoodPin
                 {
                     popoverController.SourceView = cell;
                     popoverController.SourceRect = cell.Bounds;
+                }
+            }
+        }
+
+        private void SetNavigationController()
+        {
+            NavigationController?.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+            if (NavigationController != null)
+            {
+                NavigationController.NavigationBar.ShadowImage = new UIImage();
+                NavigationController.HidesBarsOnSwipe = true;
+                NavigationController.NavigationBar.PrefersLargeTitles = true;
+            }
+        }
+
+        private void SetCustomFontForNavigationBar()
+        {
+            var customFont = UIFont.FromName("Arial", 40);
+            if (customFont != null)
+            {
+                if (NavigationController != null)
+                {
+                    NavigationController.NavigationBar.LargeTitleTextAttributes = new UIStringAttributes
+                    {
+                        ForegroundColor = UIColor.FromRGB(231, 76, 60),
+                        Font = customFont
+                    };
                 }
             }
         }
