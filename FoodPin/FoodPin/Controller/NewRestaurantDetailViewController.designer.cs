@@ -11,11 +11,19 @@ using UIKit;
 
 namespace FoodPin
 {
-    [Register ("RestaurantDetailViewController")]
-    partial class RestaurantDetailViewController
+    [Register ("NewRestaurantDetailViewController")]
+    partial class NewRestaurantDetailViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        FoodPin.RestaurantDetailHeaderView HeaderView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (HeaderView != null) {
+                HeaderView.Dispose ();
+                HeaderView = null;
+            }
         }
     }
 }

@@ -30,14 +30,14 @@ namespace FoodPin.Extensions
 
         public static UIImage GetCheckInImage(this Restaurant restaurant)
         {
-            if (restaurant.IsVisited)
-            {
-                return UIImage.FromBundle("undo");
-            }
-            else
-            {
-                return UIImage.FromBundle("tick");
-            }
+            UIImage image = restaurant.IsVisited ? UIImage.FromBundle("undo") : UIImage.FromBundle("tick");
+            return image;
+        }
+
+        public static UIImage GetCheckmarkImage(this Restaurant restaurant)
+        {
+            UIImage image = restaurant.IsVisited ? UIImage.FromBundle("CheckmarkImageView") : null;
+            return image;
         }
     }
 }
