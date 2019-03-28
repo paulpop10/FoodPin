@@ -290,13 +290,6 @@
     <Compile Include="Model\IRestaurantInfo.cs" />
     <Compile Include="Model\RestaurantInfoWithIcon.cs" />
     <Compile Include="Model\RestaurantInfo.cs" />
-    <Compile Include="Controller\NewRestaurantDetailViewController.cs">
-      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
-    </Compile>
-    <Compile Include="Controller\NewRestaurantDetailViewController.designer.cs">
-      <DependentUpon>NewRestaurantDetailViewController.cs</DependentUpon>
-      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
-    </Compile>
     <Compile Include="View\NewRestaurantDetailIconTextCell.cs">
       <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
     </Compile>
@@ -318,6 +311,37 @@
       <DependentUpon>UINavigationControllerWithTopViewControllerStatusBar.cs</DependentUpon>
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="View\RestaurantDetailMapCell.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\RestaurantDetailMapCell.designer.cs">
+      <DependentUpon>RestaurantDetailMapCell.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\RestaurantDetailSeparatorCell.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\RestaurantDetailSeparatorCell.designer.cs">
+      <DependentUpon>RestaurantDetailSeparatorCell.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Model\RestaurantMap.cs" />
+    <Compile Include="Model\RestaurantMapText.cs" />
+    <Compile Include="Controller\NewRestaurantDetailViewController.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\NewRestaurantDetailViewController.designer.cs">
+      <DependentUpon>NewRestaurantDetailViewController.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\MapViewController.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\MapViewController.designer.cs">
+      <DependentUpon>MapViewController.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\MapViewDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OFL.txt" />

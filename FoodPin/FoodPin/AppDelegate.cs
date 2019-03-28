@@ -59,6 +59,5 @@ namespace FoodPin
             UINavigationBar.Appearance.BackIndicatorImage = backButtonImage;
             UINavigationBar.Appearance.BackIndicatorTransitionMaskImage = backButtonImage;
         }
-
     }
 }
