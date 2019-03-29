@@ -18,8 +18,11 @@ namespace FoodPin
             _restaurant = restaurant;
             ThumbnailImageView.Image = _restaurant.GetImage();
             NameLabel.Text = _restaurant.Name;
+            NameLabel.Lines = 0;
             TypeLabel.Text = _restaurant.Type;
+            TypeLabel.Lines = 0;
             LocationLabel.Text = _restaurant.Location;
+            LocationLabel.Lines = 0;
         }
 
         public void OnCheckInClicked()

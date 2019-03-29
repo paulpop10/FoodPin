@@ -188,6 +188,8 @@
     <ImageAsset Include="Assets.xcassets\phone.imageset\phone.pdf" />
     <ImageAsset Include="Assets.xcassets\map.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\map.imageset\map.pdf" />
+    <ImageAsset Include="Assets.xcassets\back.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\back.imageset\back.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -228,6 +230,7 @@
     <Folder Include="Resources\Fonts\" />
     <Folder Include="Assets.xcassets\phone.imageset\" />
     <Folder Include="Assets.xcassets\map.imageset\" />
+    <Folder Include="Assets.xcassets\back.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\Main.storyboard" />
@@ -306,6 +309,13 @@
     </Compile>
     <Compile Include="View\NewRestaurantDetailTextCell.designer.cs">
       <DependentUpon>NewRestaurantDetailTextCell.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\UINavigationControllerWithTopViewControllerStatusBar.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\UINavigationControllerWithTopViewControllerStatusBar.designer.cs">
+      <DependentUpon>UINavigationControllerWithTopViewControllerStatusBar.cs</DependentUpon>
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
   </ItemGroup>

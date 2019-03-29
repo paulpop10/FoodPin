@@ -23,7 +23,14 @@ namespace FoodPin
             NavigationItem.LargeTitleDisplayMode = UINavigationItemLargeTitleDisplayMode.Never;
             SetHeaderView();
             TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
+            SetNavigationController();
             CreateRestaurantInfoList();
+            TableView.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Never;
+        }
+
+        public override UIStatusBarStyle PreferredStatusBarStyle()
+        {
+            return UIStatusBarStyle.LightContent;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -38,9 +45,45 @@ namespace FoodPin
 
         public override nint RowsInSection(UITableView tableView, nint section)
         {
-            return _restaurantInfoList.Count();
+            return _restaurantInfoList.Count;
         }
 
-        private void CreateRestaurantInfoList()         {             _restaurantInfoList = new List<IRestaurantInfo>             {                 new RestaurantInfoWithIcon(Restaurant.Phone, "phone"),                 new RestaurantInfoWithIcon(Restaurant.Location, "map"),                 new RestaurantInfo(Restaurant.Description)             };         }          private void SetHeaderView()         {             HeaderView.SetNameLabel(Restaurant.Name);             HeaderView.SetTypeLabel(Restaurant.Type);             HeaderView.SetHeaderImageView(Restaurant.GetImage());             HeaderView.SetHeartImageView(Restaurant.GetCheckmarkImage());         } 
+        public override void ViewWillAppear(bool animated)
+        {
+            if (NavigationController != null)
+            {
+                NavigationController.HidesBarsOnSwipe = false;
+                NavigationController.SetNavigationBarHidden(false, true);
+            }
+        }
+
+        private void CreateRestaurantInfoList()
+        {
+            _restaurantInfoList = new List<IRestaurantInfo>
+            {
+                new RestaurantInfoWithIcon(Restaurant.Phone, "phone"),
+                new RestaurantInfoWithIcon(Restaurant.Location, "map"),
+                new RestaurantInfo(Restaurant.Description)
+            };
+        }
+
+        private void SetHeaderView()
+        {
+            HeaderView.SetNameLabel(Restaurant.Name);
+            HeaderView.SetTypeLabel(Restaurant.Type);
+            HeaderView.SetHeaderImageView(Restaurant.GetImage());
+            HeaderView.SetHeartImageView(Restaurant.GetCheckmarkImage());
+        }
+
+        private void SetNavigationController()
+        {
+            NavigationController?.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+            if (NavigationController != null)
+            {
+                NavigationController.NavigationBar.ShadowImage = new UIImage();
+                NavigationController.NavigationBar.TintColor = UIColor.White;
+                NavigationController.HidesBarsOnSwipe = false;
+            }
+        }
     }
 }

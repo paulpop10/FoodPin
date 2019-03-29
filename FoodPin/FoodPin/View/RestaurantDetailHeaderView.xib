@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -31,25 +31,25 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="441">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="441">
                     <rect key="frame" x="14" y="633" width="100" height="20"/>
                     <color key="backgroundColor" red="0.99610358476638794" green="0.13776162266731262" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="91Y-NS-QGG"/>
-                        <constraint firstAttribute="height" constant="20" id="zJ2-1u-Ygb"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="zJ2-1u-Ygb"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik Light" pointSize="13"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                     <color key="textColor" red="0.99287682771682739" green="0.99700695276260376" blue="0.99637609720230103" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="402">
-                    <rect key="frame" x="14" y="588.5" width="91.5" height="41.5"/>
+                    <rect key="frame" x="14" y="589" width="86" height="41"/>
                     <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik Medium" pointSize="35"/>
                     <color key="textColor" red="0.99287682771682739" green="0.99700695276260376" blue="0.99637609720230103" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="306">
-                    <rect key="frame" x="130" y="632" width="15" height="15"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="306">
+                    <rect key="frame" x="122" y="635.5" width="15" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="DJH-W8-QZ5"/>
                         <constraint firstAttribute="width" constant="15" id="Hiz-uu-dOg"/>
@@ -70,6 +70,7 @@
                 <constraint firstAttribute="trailing" secondItem="631" secondAttribute="trailing" id="jEP-6H-rxd"/>
                 <constraint firstItem="631" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="lbM-Xp-ax8"/>
                 <constraint firstAttribute="bottom" secondItem="631" secondAttribute="bottom" id="mod-yK-zSL"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="306" secondAttribute="trailing" constant="10" id="vhQ-i9-aZu"/>
                 <constraint firstItem="153" firstAttribute="top" secondItem="1" secondAttribute="top" id="wDT-Xt-bto"/>
                 <constraint firstItem="306" firstAttribute="leading" secondItem="441" secondAttribute="trailing" constant="8" id="xcJ-n3-GAO"/>
                 <constraint firstItem="441" firstAttribute="top" secondItem="402" secondAttribute="bottom" constant="3" id="ylm-qI-Rde"/>
