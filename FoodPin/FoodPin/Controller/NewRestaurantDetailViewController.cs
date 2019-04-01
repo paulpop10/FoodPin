@@ -26,6 +26,7 @@ namespace FoodPin
             SetNavigationController();
             CreateRestaurantInfoList();
             TableView.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Never;
+
         }
 
         public override UIStatusBarStyle PreferredStatusBarStyle()
@@ -35,7 +36,22 @@ namespace FoodPin
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            if (_restaurantInfoList[indexPath.Row] is RestaurantInfoWithIcon)             {                 var restaurantInfoWithIconCell = tableView.DequeueReusableCell(nameof(NewRestaurantDetailIconTextCell)) as NewRestaurantDetailIconTextCell;                 restaurantInfoWithIconCell.SetWithRestaurant(_restaurantInfoList[indexPath.Row] as RestaurantInfoWithIcon);                 return restaurantInfoWithIconCell;             }             else             if (_restaurantInfoList[indexPath.Row] is RestaurantInfo)             {                 var restaurantInfoCell = tableView.DequeueReusableCell(nameof(NewRestaurantDetailTextCell)) as NewRestaurantDetailTextCell;                 restaurantInfoCell.SetWithRestaurant(_restaurantInfoList[indexPath.Row] as RestaurantInfo);                 return restaurantInfoCell;             }             else             {                 return null;             }
+            if (_restaurantInfoList[indexPath.Row] is RestaurantInfoWithIcon)             {                 var restaurantInfoWithIconCell = tableView.DequeueReusableCell(nameof(NewRestaurantDetailIconTextCell)) as NewRestaurantDetailIconTextCell;                 restaurantInfoWithIconCell.SetWithRestaurant(_restaurantInfoList[indexPath.Row] as RestaurantInfoWithIcon);                 return restaurantInfoWithIconCell;             }             else             if (_restaurantInfoList[indexPath.Row] is RestaurantInfo)             {                 var restaurantInfoCell = tableView.DequeueReusableCell(nameof(NewRestaurantDetailTextCell)) as NewRestaurantDetailTextCell;                 restaurantInfoCell.SetWithRestaurant(_restaurantInfoList[indexPath.Row] as RestaurantInfo);                 return restaurantInfoCell;             }             else
+            if (_restaurantInfoList[indexPath.Row] is RestaurantMapText)             {
+                var restaurantMapTextCell = tableView.DequeueReusableCell(nameof(RestaurantDetailSeparatorCell)) as RestaurantDetailSeparatorCell;
+                restaurantMapTextCell.SetWithRestaurant(_restaurantInfoList[indexPath.Row] as RestaurantMapText);
+                return restaurantMapTextCell;             }
+            else
+            if (_restaurantInfoList[indexPath.Row] is RestaurantMap)
+            {
+                var restaurantMapCell = tableView.DequeueReusableCell(nameof(RestaurantDetailMapCell)) as RestaurantDetailMapCell;
+                restaurantMapCell.Configure(Restaurant.Location);
+                return restaurantMapCell;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public override nint NumberOfSections(UITableView tableView)
@@ -57,13 +73,24 @@ namespace FoodPin
             }
         }
 
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.Identifier == "showMap")
+            {
+                var destinationcontroller = segue.DestinationViewController as MapViewController;
+                destinationcontroller.Restaurant = Restaurant;
+            }
+        }
+
         private void CreateRestaurantInfoList()
         {
             _restaurantInfoList = new List<IRestaurantInfo>
             {
                 new RestaurantInfoWithIcon(Restaurant.Phone, "phone"),
                 new RestaurantInfoWithIcon(Restaurant.Location, "map"),
-                new RestaurantInfo(Restaurant.Description)
+                new RestaurantInfo(Restaurant.Description),
+                new RestaurantMapText("HOW TO GET HERE"),
+                new RestaurantMap()
             };
         }
 

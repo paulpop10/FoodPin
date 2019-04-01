@@ -52,7 +52,7 @@ namespace FoodPin
             {
                new RestaurantInfoWithIcon("phone", Restaurant.Phone),
                 new RestaurantInfoWithIcon("map", Restaurant.Location),
-                new RestaurantInfo(Restaurant.Description)
+                new RestaurantInfo(Restaurant.Description),
             };    
         }
     }

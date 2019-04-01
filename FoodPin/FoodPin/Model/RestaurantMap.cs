@@ -2,7 +2,7 @@
 
 namespace FoodPin.Model
 {
-    public interface IRestaurantInfo
+    public class RestaurantMap : IRestaurantInfo
     {
     }
 }
