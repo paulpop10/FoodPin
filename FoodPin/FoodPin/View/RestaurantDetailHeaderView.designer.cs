@@ -35,6 +35,10 @@ namespace FoodPin
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView RatingImageView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel TypeLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -62,6 +66,11 @@ namespace FoodPin
             if (NameLabel != null) {
                 NameLabel.Dispose ();
                 NameLabel = null;
+            }
+
+            if (RatingImageView != null) {
+                RatingImageView.Dispose ();
+                RatingImageView = null;
             }
 
             if (TypeLabel != null) {

@@ -19,8 +19,21 @@ namespace FoodPin
 
         public override void ViewDidLoad()
         {
+            base.ViewDidLoad();
             SetAnnotation();
             CustomizeMapView();
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+            NavigationController.NavigationBar.TintColor = UIColor.Black;
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            NavigationController.NavigationBar.TintColor = UIColor.White;
+            base.ViewWillDisappear(animated);
         }
 
         public void SetAnnotation()
