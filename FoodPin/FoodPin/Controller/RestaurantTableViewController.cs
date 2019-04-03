@@ -130,6 +130,12 @@ namespace FoodPin
                     destinationController.Restaurant = _restaurants[indexpath.Row];           
                 }
             }
+            else if (segue.Identifier == "addRestaurant") 
+            {
+                var destinationController = segue.DestinationViewController as AddRestaurantNavigationController;
+                var addRestaurantTableViewController = destinationController.TopViewController as AddRestaurantTableViewController;
+                addRestaurantTableViewController.AddRestaurantCloseDelegate = UnwindToHome;               
+            }
         }
         #endregion
         #region Extra methods
@@ -178,6 +184,11 @@ namespace FoodPin
                     };
                 }
             }
+        }
+
+        private void UnwindToHome()
+        {
+            DismissViewController(true, null);
         }
         #endregion
     }

@@ -202,6 +202,14 @@
     <ImageAsset Include="Assets.xcassets\love.imageset\love.pdf" />
     <ImageAsset Include="Assets.xcassets\sad.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\sad.imageset\sad.pdf" />
+    <ImageAsset Include="Assets.xcassets\close.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\close.imageset\close.pdf" />
+    <ImageAsset Include="Assets.xcassets\photo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\photo.imageset\photo.pdf" />
+    <ImageAsset Include="Assets.xcassets\plus.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\plus.imageset\plus.pdf" />
+    <ImageAsset Include="Assets.xcassets\save.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\save.imageset\save.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -249,6 +257,10 @@
     <Folder Include="Assets.xcassets\happy.imageset\" />
     <Folder Include="Assets.xcassets\love.imageset\" />
     <Folder Include="Assets.xcassets\sad.imageset\" />
+    <Folder Include="Assets.xcassets\close.imageset\" />
+    <Folder Include="Assets.xcassets\photo.imageset\" />
+    <Folder Include="Assets.xcassets\plus.imageset\" />
+    <Folder Include="Assets.xcassets\save.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\Main.storyboard" />
@@ -367,6 +379,29 @@
       <DependentUpon>ReviewViewController.cs</DependentUpon>
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Controller\AddRestaurantTableViewController.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\AddRestaurantTableViewController.designer.cs">
+      <DependentUpon>AddRestaurantTableViewController.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\AddRestaurantNavigationController.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\AddRestaurantNavigationController.designer.cs">
+      <DependentUpon>AddRestaurantNavigationController.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\RoundedTextField.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\RoundedTextField.designer.cs">
+      <DependentUpon>RoundedTextField.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\TextFieldDelegate.cs" />
+    <Compile Include="View\ImagePickerControllerDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OFL.txt" />

@@ -21,7 +21,7 @@ namespace FoodPin.View
 
             var annotationView = mapView.DequeueReusableAnnotation(Identifier) as MKMarkerAnnotationView;
             annotationView = annotationView ?? new MKMarkerAnnotationView(annotation, Identifier);
-            annotationView.GlyphText = "\ud83d\ude38";
+            annotationView.GlyphText = "\ud83c\udf74";
             annotationView.MarkerTintColor = UIColor.Red;
 
             return annotationView;
