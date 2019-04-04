@@ -190,6 +190,18 @@
     <ImageAsset Include="Assets.xcassets\map.imageset\map.pdf" />
     <ImageAsset Include="Assets.xcassets\back.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\back.imageset\back.pdf" />
+    <ImageAsset Include="Assets.xcassets\angry.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\angry.imageset\angry.pdf" />
+    <ImageAsset Include="Assets.xcassets\cool.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\cool.imageset\cool.pdf" />
+    <ImageAsset Include="Assets.xcassets\cross.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\cross.imageset\cross.pdf" />
+    <ImageAsset Include="Assets.xcassets\happy.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\happy.imageset\happy.pdf" />
+    <ImageAsset Include="Assets.xcassets\love.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\love.imageset\love.pdf" />
+    <ImageAsset Include="Assets.xcassets\sad.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\sad.imageset\sad.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -231,6 +243,12 @@
     <Folder Include="Assets.xcassets\phone.imageset\" />
     <Folder Include="Assets.xcassets\map.imageset\" />
     <Folder Include="Assets.xcassets\back.imageset\" />
+    <Folder Include="Assets.xcassets\angry.imageset\" />
+    <Folder Include="Assets.xcassets\cool.imageset\" />
+    <Folder Include="Assets.xcassets\cross.imageset\" />
+    <Folder Include="Assets.xcassets\happy.imageset\" />
+    <Folder Include="Assets.xcassets\love.imageset\" />
+    <Folder Include="Assets.xcassets\sad.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\Main.storyboard" />
@@ -342,6 +360,13 @@
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="View\MapViewDelegate.cs" />
+    <Compile Include="Controller\ReviewViewController.cs">
+      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\ReviewViewController.designer.cs">
+      <DependentUpon>ReviewViewController.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OFL.txt" />

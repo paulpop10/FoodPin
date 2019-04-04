@@ -13,6 +13,11 @@ namespace FoodPin
             SelectionStyle = UITableViewCellSelectionStyle.None;
         }
 
+        public override void AwakeFromNib()
+        {
+            base.AwakeFromNib();
+        }
+
         public override void SetSelected(bool selected, bool animated)
         {
             base.SetSelected(selected, animated);

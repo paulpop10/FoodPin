@@ -16,13 +16,31 @@ namespace FoodPin
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView FooterView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         FoodPin.RestaurantDetailHeaderView HeaderView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton RateButton { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (FooterView != null) {
+                FooterView.Dispose ();
+                FooterView = null;
+            }
+
             if (HeaderView != null) {
                 HeaderView.Dispose ();
                 HeaderView = null;
+            }
+
+            if (RateButton != null) {
+                RateButton.Dispose ();
+                RateButton = null;
             }
         }
     }

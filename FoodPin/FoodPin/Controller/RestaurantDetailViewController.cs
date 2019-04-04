@@ -18,7 +18,8 @@ namespace FoodPin
         public Restaurant Restaurant { get; set; }
 
         public override void ViewDidLoad()
-        {              
+        {
+            base.ViewDidLoad();            
             NavigationItem.LargeTitleDisplayMode = UINavigationItemLargeTitleDisplayMode.Never;
             this.CreateRestaurantInfoList();
             TableView.DataSource = this;

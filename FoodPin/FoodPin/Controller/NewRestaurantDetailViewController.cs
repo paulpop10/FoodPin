@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CoreGraphics;
 using FoodPin.Extensions;
 using FoodPin.Model;
 using Foundation;
@@ -20,13 +21,14 @@ namespace FoodPin
 
         public override void ViewDidLoad()
         {
+            base.ViewDidLoad();
             NavigationItem.LargeTitleDisplayMode = UINavigationItemLargeTitleDisplayMode.Never;
             SetHeaderView();
             TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
             SetNavigationController();
             CreateRestaurantInfoList();
+            HeaderView.SetRatingImageView(UIImage.FromBundle(Restaurant.Rating));
             TableView.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Never;
-
         }
 
         public override UIStatusBarStyle PreferredStatusBarStyle()
@@ -66,6 +68,7 @@ namespace FoodPin
 
         public override void ViewWillAppear(bool animated)
         {
+            base.ViewWillAppear(animated);
             if (NavigationController != null)
             {
                 NavigationController.HidesBarsOnSwipe = false;
@@ -75,11 +78,33 @@ namespace FoodPin
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
+            base.PrepareForSegue(segue, sender);
             if (segue.Identifier == "showMap")
             {
                 var destinationcontroller = segue.DestinationViewController as MapViewController;
                 destinationcontroller.Restaurant = Restaurant;
+            } 
+            else if (segue.Identifier == "showReview")
+            {
+                var destinationController = segue.DestinationViewController as ReviewViewController;
+                destinationController.Restaurant = Restaurant;
+                destinationController.CloseDelegate = CloseSegue;
+                destinationController.RateDelegate = RateRestaurant;
             }
+        }
+
+        private void CloseSegue()
+        {
+            DismissViewController(true, null);
+        }
+
+        private void RateRestaurant(string rate)
+        {
+            Restaurant.Rating = rate;
+            DismissViewController(true, () =>
+           {
+               HeaderView.SetRatingImageView(UIImage.FromBundle(rate));
+           });
         }
 
         private void CreateRestaurantInfoList()

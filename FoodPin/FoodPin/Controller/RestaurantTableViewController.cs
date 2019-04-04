@@ -42,6 +42,7 @@ namespace FoodPin
         #region View controller life cycle
         public override void ViewDidLoad()
         {
+            base.ViewDidLoad();
             TableView.CellLayoutMarginsFollowReadableWidth = true;
             SetNavigationController();
             SetCustomFontForNavigationBar();
@@ -49,6 +50,7 @@ namespace FoodPin
 
         public override void ViewWillAppear(bool animated)
         {
+            base.ViewWillAppear(animated);
             if (NavigationController != null)
             {
                 NavigationController.HidesBarsOnSwipe = true;
@@ -118,6 +120,7 @@ namespace FoodPin
         #region Navigation
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
+            base.PrepareForSegue(segue, sender);
             if (segue.Identifier == "showRestaurantDetail")
             {              
                 var indexpath = TableView.IndexPathForSelectedRow;

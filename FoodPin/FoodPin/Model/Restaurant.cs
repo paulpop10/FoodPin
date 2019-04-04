@@ -4,7 +4,7 @@ namespace FoodPin
 {
     public class Restaurant
     {
-        public Restaurant(string name, string type, string location, string phone, string description, string image, bool isVisited)
+        public Restaurant(string name, string type, string location, string phone, string description, string image, bool isVisited, string rating = "")
         {
             Name = name;
             Type = type;
@@ -13,6 +13,11 @@ namespace FoodPin
             Description = description;
             Image = image;
             IsVisited = isVisited;
+            Rating = rating;
+        }
+
+        public Restaurant()
+        {
         }
 
         public string Name { get; }
@@ -28,5 +33,7 @@ namespace FoodPin
         public string Image { get; }
 
         public bool IsVisited { get; set; }
+
+        public string Rating { get; set; }
     }
 }
