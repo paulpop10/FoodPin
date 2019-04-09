@@ -9,7 +9,8 @@ namespace FoodPin.Extensions
     {
         public static UIImage GetImage(this RestaurantMO restaurantMO)
         {
-            return PhotoFromByteArray(restaurantMO.Image);
+            NSData data = NSData.FromArray(restaurantMO.Image);
+            return UIImage.LoadFromData(data);
         }
 
         public static NSObject[] GetActivityItems(this RestaurantMO restaurantMO)
@@ -39,12 +40,6 @@ namespace FoodPin.Extensions
         {
             UIImage image = restaurantMO.IsVisited ? UIImage.FromBundle("CheckmarkImageView") : null;
             return image;
-        }
-
-        private static UIImage PhotoFromByteArray(byte[] photoByteArray)
-        {
-            NSData data = NSData.FromArray(photoByteArray);
-            return UIImage.LoadFromData(data);
         }
     }
 }
