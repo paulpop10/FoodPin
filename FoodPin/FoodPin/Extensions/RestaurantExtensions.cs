@@ -1,4 +1,5 @@
 ﻿using System;
+using FoodPin.Model;
 using Foundation;
 using UIKit;
 
@@ -6,16 +7,16 @@ namespace FoodPin.Extensions
 {
     public static class RestaurantExtensions
     {
-        public static UIImage GetImage(this Restaurant restaurant)
+        public static UIImage GetImage(this RestaurantMO restaurantMO)
         {
-            return UIImage.FromBundle(restaurant.Image);
+            return PhotoFromByteArray(restaurantMO.Image);
         }
 
-        public static NSObject[] GetActivityItems(this Restaurant restaurant)
+        public static NSObject[] GetActivityItems(this RestaurantMO restaurantMO)
         {
-            var defaultText = "Just checking in at " + restaurant.Name;
+            var defaultText = "Just checking in at " + restaurantMO.Name;
             var activityItems = new NSObject[] { };
-            var imageToLoad = restaurant.GetImage();
+            var imageToLoad = restaurantMO.GetImage();
             if (imageToLoad != null)
             {
                 activityItems = new NSObject[] { (new NSString(defaultText)), imageToLoad };
@@ -28,16 +29,22 @@ namespace FoodPin.Extensions
             return activityItems;
         }
 
-        public static UIImage GetCheckInImage(this Restaurant restaurant)
+        public static UIImage GetCheckInImage(this RestaurantMO restaurantMO)
         {
-            UIImage image = restaurant.IsVisited ? UIImage.FromBundle("undo") : UIImage.FromBundle("tick");
+            UIImage image = restaurantMO.IsVisited ? UIImage.FromBundle("undo") : UIImage.FromBundle("tick");
             return image;
         }
 
-        public static UIImage GetCheckmarkImage(this Restaurant restaurant)
+        public static UIImage GetCheckmarkImage(this RestaurantMO restaurantMO)
         {
-            UIImage image = restaurant.IsVisited ? UIImage.FromBundle("CheckmarkImageView") : null;
+            UIImage image = restaurantMO.IsVisited ? UIImage.FromBundle("CheckmarkImageView") : null;
             return image;
+        }
+
+        private static UIImage PhotoFromByteArray(byte[] photoByteArray)
+        {
+            NSData data = NSData.FromArray(photoByteArray);
+            return UIImage.LoadFromData(data);
         }
     }
 }

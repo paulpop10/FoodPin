@@ -6,11 +6,11 @@ using UIKit;
 namespace FoodPin
 {
     public partial class RestaurantTableViewController
-    {       
+    {             
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var cell = tableView.DequeueReusableCell(CellIdentifier) as RestaurantTableViewCell;
-            cell.SetWithRestaurant(_restaurants[indexPath.Row]);
+            cell.SetWithRestaurant(_restaurantsMO[indexPath.Row]);
             return cell;
         }
 
@@ -21,7 +21,7 @@ namespace FoodPin
 
         public override nint RowsInSection(UITableView tableView, nint section)
         {
-            return _restaurants.Count;
+            return _restaurantsMO.Count;
         }
     }
 }

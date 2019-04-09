@@ -1,20 +1,18 @@
 {
   "images": [
     {
+      "filename": "empty.pdf",
       "idiom": "universal"
     },
     {
-      "filename": "cafeloisl.jpg",
       "scale": "1x",
       "idiom": "universal"
     },
     {
-      "filename": "cafeloisl@2x.jpg",
       "scale": "2x",
       "idiom": "universal"
     },
     {
-      "filename": "cafeloisl@3x.jpg",
       "scale": "3x",
       "idiom": "universal"
     },

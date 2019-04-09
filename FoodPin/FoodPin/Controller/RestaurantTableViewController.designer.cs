@@ -14,8 +14,16 @@ namespace FoodPin
     [Register ("RestaurantTableViewController")]
     partial class RestaurantTableViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView EmptyListImageView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (EmptyListImageView != null) {
+                EmptyListImageView.Dispose ();
+                EmptyListImageView = null;
+            }
         }
     }
 }

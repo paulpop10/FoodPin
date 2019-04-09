@@ -4,6 +4,7 @@ using System.Linq;
 using CoreGraphics;
 using FoodPin.Extensions;
 using FoodPin.Model;
+using FoodPin.Controller;
 using Foundation;
 using UIKit;
 
@@ -17,7 +18,7 @@ namespace FoodPin
         {
         }
 
-        public Restaurant Restaurant { get; set; }
+        public RestaurantMO RestaurantMO { get; set; }
 
         public override void ViewDidLoad()
         {
@@ -27,7 +28,7 @@ namespace FoodPin
             TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
             SetNavigationController();
             CreateRestaurantInfoList();
-            HeaderView.SetRatingImageView(UIImage.FromBundle(Restaurant.Rating));
+            HeaderView.SetRatingImageView(UIImage.FromBundle(RestaurantMO.Rating));
             TableView.ContentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.Never;
         }
 
@@ -47,7 +48,7 @@ namespace FoodPin
             if (_restaurantInfoList[indexPath.Row] is RestaurantMap)
             {
                 var restaurantMapCell = tableView.DequeueReusableCell(nameof(RestaurantDetailMapCell)) as RestaurantDetailMapCell;
-                restaurantMapCell.Configure(Restaurant.Location);
+                restaurantMapCell.Configure(RestaurantMO.Location);
                 return restaurantMapCell;
             }
             else
@@ -82,12 +83,12 @@ namespace FoodPin
             if (segue.Identifier == "showMap")
             {
                 var destinationcontroller = segue.DestinationViewController as MapViewController;
-                destinationcontroller.Restaurant = Restaurant;
+                destinationcontroller.RestaurantMO = RestaurantMO;
             } 
             else if (segue.Identifier == "showReview")
             {
                 var destinationController = segue.DestinationViewController as ReviewViewController;
-                destinationController.Restaurant = Restaurant;
+                destinationController.RestaurantMO = RestaurantMO;
                 destinationController.CloseDelegate = CloseSegue;
                 destinationController.RateDelegate = RateRestaurant;
             }
@@ -100,20 +101,22 @@ namespace FoodPin
 
         private void RateRestaurant(string rate)
         {
-            Restaurant.Rating = rate;
+            var dataBaseConnection = DataBaseConnection.Instance;
+            RestaurantMO.Rating = rate;
             DismissViewController(true, () =>
            {
                HeaderView.SetRatingImageView(UIImage.FromBundle(rate));
            });
+            dataBaseConnection.Conn.Update(RestaurantMO);
         }
 
         private void CreateRestaurantInfoList()
         {
             _restaurantInfoList = new List<IRestaurantInfo>
             {
-                new RestaurantInfoWithIcon(Restaurant.Phone, "phone"),
-                new RestaurantInfoWithIcon(Restaurant.Location, "map"),
-                new RestaurantInfo(Restaurant.Description),
+                new RestaurantInfoWithIcon(RestaurantMO.Phone, "phone"),
+                new RestaurantInfoWithIcon(RestaurantMO.Location, "map"),
+                new RestaurantInfo(RestaurantMO.Summary),
                 new RestaurantMapText("HOW TO GET HERE"),
                 new RestaurantMap()
             };
@@ -121,10 +124,10 @@ namespace FoodPin
 
         private void SetHeaderView()
         {
-            HeaderView.SetNameLabel(Restaurant.Name);
-            HeaderView.SetTypeLabel(Restaurant.Type);
-            HeaderView.SetHeaderImageView(Restaurant.GetImage());
-            HeaderView.SetHeartImageView(Restaurant.GetCheckmarkImage());
+            HeaderView.SetNameLabel(RestaurantMO.Name);
+            HeaderView.SetTypeLabel(RestaurantMO.Type);
+            HeaderView.SetHeaderImageView(RestaurantMO.GetImage());
+            HeaderView.SetHeartImageView(RestaurantMO.GetCheckmarkImage());
         }
 
         private void SetNavigationController()

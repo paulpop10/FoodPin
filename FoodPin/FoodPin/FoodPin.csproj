@@ -82,98 +82,25 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="SQLitePCLRaw.core">
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.sqlite3">
+      <HintPath>..\packages\SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.provider.sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>..\packages\sqlite-net-pcl.1.5.231\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\restaurant.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\restaurant.imageset\restaurant.jpg" />
-    <ImageAsset Include="Assets.xcassets\restaurant.imageset\restaurant%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\restaurant.imageset\restaurant%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\barrafina.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\barrafina.imageset\barrafina.jpg" />
-    <ImageAsset Include="Assets.xcassets\barrafina.imageset\barrafina%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\barrafina.imageset\barrafina%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\bourkestreetbakery.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\bourkestreetbakery.imageset\bourkestreetbakery.jpg" />
-    <ImageAsset Include="Assets.xcassets\bourkestreetbakery.imageset\bourkestreetbakery%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\bourkestreetbakery.imageset\bourkestreetbakery%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\cafedeadend.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\cafedeadend.imageset\cafedeadend.jpg" />
-    <ImageAsset Include="Assets.xcassets\cafedeadend.imageset\cafedeadend%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\cafedeadend.imageset\cafedeadend%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\cafeloisl.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\cafeloisl.imageset\cafeloisl.jpg" />
-    <ImageAsset Include="Assets.xcassets\cafeloisl.imageset\cafeloisl%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\cafeloisl.imageset\cafeloisl%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\cafelore.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\cafelore.imageset\cafelore.jpg" />
-    <ImageAsset Include="Assets.xcassets\cafelore.imageset\cafelore%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\cafelore.imageset\cafelore%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\caskpubkitchen.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\caskpubkitchen.imageset\caskpubkitchen.jpg" />
-    <ImageAsset Include="Assets.xcassets\caskpubkitchen.imageset\caskpubkitchen%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\caskpubkitchen.imageset\caskpubkitchen%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\confessional.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\confessional.imageset\confessional.jpg" />
-    <ImageAsset Include="Assets.xcassets\confessional.imageset\confessional%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\confessional.imageset\confessional%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\donostia.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\donostia.imageset\donostia.jpg" />
-    <ImageAsset Include="Assets.xcassets\donostia.imageset\donostia%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\donostia.imageset\donostia%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\fiveleaves.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\fiveleaves.imageset\fiveleaves.jpg" />
-    <ImageAsset Include="Assets.xcassets\fiveleaves.imageset\fiveleaves%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\fiveleaves.imageset\fiveleaves%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\forkeerestaurant.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\forkeerestaurant.imageset\forkeerestaurant.jpg" />
-    <ImageAsset Include="Assets.xcassets\forkeerestaurant.imageset\forkeerestaurant%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\forkeerestaurant.imageset\forkeerestaurant%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\grahamavenuemeats.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\grahamavenuemeats.imageset\grahamavenuemeats.jpg" />
-    <ImageAsset Include="Assets.xcassets\grahamavenuemeats.imageset\grahamavenuemeats%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\grahamavenuemeats.imageset\grahamavenuemeats%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\haighschocolate.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\haighschocolate.imageset\haighschocolate.jpg" />
-    <ImageAsset Include="Assets.xcassets\haighschocolate.imageset\haighschocolate%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\haighschocolate.imageset\haighschocolate%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\homei.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\homei.imageset\homei.jpg" />
-    <ImageAsset Include="Assets.xcassets\homei.imageset\homei%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\homei.imageset\homei%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\palominoespresso.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\palominoespresso.imageset\palominoespresso.jpg" />
-    <ImageAsset Include="Assets.xcassets\palominoespresso.imageset\palominoespresso%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\palominoespresso.imageset\palominoespresso%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\petiteoyster.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\petiteoyster.imageset\petiteoyster%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\petiteoyster.imageset\petiteoyster-1.jpg" />
-    <ImageAsset Include="Assets.xcassets\petiteoyster.imageset\petiteoyster%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\posatelier.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\posatelier.imageset\posatelier.jpg" />
-    <ImageAsset Include="Assets.xcassets\posatelier.imageset\posatelier%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\posatelier.imageset\posatelier%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\royaloak.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\royaloak.imageset\royaloak.jpg" />
-    <ImageAsset Include="Assets.xcassets\royaloak.imageset\royaloak%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\royaloak.imageset\royaloak%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\teakha.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\teakha.imageset\teakha.jpg" />
-    <ImageAsset Include="Assets.xcassets\teakha.imageset\teakha%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\teakha.imageset\teakha%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\traif.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\traif.imageset\traif.jpg" />
-    <ImageAsset Include="Assets.xcassets\traif.imageset\traif%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\traif.imageset\traif%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\upstate.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\upstate.imageset\upstate.jpg" />
-    <ImageAsset Include="Assets.xcassets\upstate.imageset\upstate%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\upstate.imageset\upstate%403x.jpg" />
-    <ImageAsset Include="Assets.xcassets\wafflewolf.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\wafflewolf.imageset\wafflewolf.jpg" />
-    <ImageAsset Include="Assets.xcassets\wafflewolf.imageset\wafflewolf%402x.jpg" />
-    <ImageAsset Include="Assets.xcassets\wafflewolf.imageset\wafflewolf%403x.jpg" />
     <ImageAsset Include="Assets.xcassets\CheckmarkImageView.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\CheckmarkImageView.imageset\heart-tick.pdf" />
     <ImageAsset Include="Assets.xcassets\delete.imageset\Contents.json" />
@@ -210,6 +137,8 @@
     <ImageAsset Include="Assets.xcassets\plus.imageset\plus.pdf" />
     <ImageAsset Include="Assets.xcassets\save.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\save.imageset\save.pdf" />
+    <ImageAsset Include="Assets.xcassets\emptyView.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\emptyView.imageset\empty.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -261,6 +190,7 @@
     <Folder Include="Assets.xcassets\photo.imageset\" />
     <Folder Include="Assets.xcassets\plus.imageset\" />
     <Folder Include="Assets.xcassets\save.imageset\" />
+    <Folder Include="Assets.xcassets\emptyView.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\Main.storyboard" />
@@ -402,6 +332,8 @@
     </Compile>
     <Compile Include="View\TextFieldDelegate.cs" />
     <Compile Include="View\ImagePickerControllerDelegate.cs" />
+    <Compile Include="Model\RestaurantMO.cs" />
+    <Compile Include="Controller\DataBaseConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OFL.txt" />
@@ -432,5 +364,5 @@
     </BundleResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\packages\StyleCop.MSBuild.6.0.0\build\StyleCop.MSBuild.targets" Condition="Exists('..\packages\StyleCop.MSBuild.6.0.0\build\StyleCop.MSBuild.targets')" />
+  <Import Project="..\packages\StyleCop.MSBuild.6.1.0\build\StyleCop.MSBuild.targets" Condition="Exists('..\packages\StyleCop.MSBuild.6.1.0\build\StyleCop.MSBuild.targets')" />
 </Project>
