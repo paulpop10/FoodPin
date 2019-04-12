@@ -1,4 +1,6 @@
 using System;
+using FoodPin.Controller;
+using FoodPin.Model;
 using FoodPin.View;
 using Foundation;
 using UIKit;
@@ -7,6 +9,8 @@ namespace FoodPin
 {
     public partial class AddRestaurantTableViewController : UITableViewController
     {
+        private bool _wasImageSet;
+
         public AddRestaurantTableViewController(IntPtr handle) : base(handle)
         {
         }
@@ -15,8 +19,8 @@ namespace FoodPin
 
         public override void ViewDidLoad()
         {
-            base.ViewDidLoad();
-            CustomizeView();
+            base.ViewDidLoad();         
+            CustomizeView();         
         }
 
         public override void ViewWillAppear(bool animated)
@@ -63,7 +67,7 @@ namespace FoodPin
             if (UIImagePickerController.IsSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary))
             {
                 var imagePicker = new UIImagePickerController();
-                imagePicker.Delegate = new ImagePickerControllerDelegate(PhotoImageView);
+                imagePicker.Delegate = new ImagePickerControllerDelegate(PhotoImageView, OnImageSet);
                 imagePicker.AllowsEditing = false;
                 imagePicker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
                 PresentViewController(imagePicker, true, null);
@@ -75,7 +79,7 @@ namespace FoodPin
             if (UIImagePickerController.IsSourceTypeAvailable(UIImagePickerControllerSourceType.Camera))
             {
                 var imagePicker = new UIImagePickerController();
-                imagePicker.Delegate = new ImagePickerControllerDelegate(PhotoImageView);
+                imagePicker.Delegate = new ImagePickerControllerDelegate(PhotoImageView, OnImageSet);
                 imagePicker.AllowsEditing = false;
                 imagePicker.SourceType = UIImagePickerControllerSourceType.Camera;
                 PresentViewController(imagePicker, true, null);
@@ -170,7 +174,6 @@ namespace FoodPin
             if (CheckFilledTextFields() && OnlyNumbersPhoneTextField(RestaurantPhoneTextField.Text))
             {
                 SetNewRestaurantData();
-                AddRestaurantCloseDelegate();
             }
             else if (CheckFilledTextFields() && !OnlyNumbersPhoneTextField(RestaurantPhoneTextField.Text))
             {
@@ -204,7 +207,8 @@ namespace FoodPin
                RestaurantTypeTextField.Text == string.Empty ||
                RestaurantPhoneTextField.Text == string.Empty ||
                RestaurantAddressTextField.Text == string.Empty ||
-               RestaurantDescriptionTextView.Text == string.Empty)
+               RestaurantDescriptionTextView.Text == string.Empty ||
+               !_wasImageSet)
             {
                 return false;
             }
@@ -216,26 +220,40 @@ namespace FoodPin
 
         private void SetNewRestaurantData()
         {
-            var restaurantName = RestaurantNameTextField.Text;
-            var restaurantType = RestaurantTypeTextField.Text;
-            var restaurantPhone = RestaurantPhoneTextField.Text;
-            var restaurantAddress = RestaurantAddressTextField.Text;
-            var restaurantDescription = RestaurantDescriptionTextView.Text;
-            Console.WriteLine(
-                "Name: " + restaurantName + "\n" +
-                "Type: " + restaurantType + "\n" +
-                "Location: " + restaurantAddress + "\n" +
-                "Phone: " + restaurantPhone + "\n" +
-                "Description: " + restaurantDescription + "\n");
+            var dataBaseConnection = DataBaseConnection.Instance;
+            var maxPk = dataBaseConnection.Conn.Table<RestaurantMO>().OrderByDescending(c => c.Id).FirstOrDefault();
+            RestaurantMO restaurantMO = new RestaurantMO()
+            {
+                Id = maxPk == null ? 1 : maxPk.Id + 1,
+                Name = RestaurantNameTextField.Text,
+                Type = RestaurantTypeTextField.Text,
+                Location = RestaurantAddressTextField.Text,
+                Phone = RestaurantPhoneTextField.Text,
+                Summary = RestaurantDescriptionTextView.Text,
+                IsVisited = false,
+                Image = PhotoImageView.Image.AsPNG().ToArray(),
+                Rating = string.Empty
+            };
+            dataBaseConnection.Conn.Insert(restaurantMO);
+            CreateAddedRestaurantAlertController(restaurantMO.Name);
         }
 
         private void CreateFieldsNotFilledAlertController()
         {
-            var emptyFieldsAlert = UIAlertController.Create("Oops", "We can't proceed because at least one of the fields is blank.Please note that all fields are required.", UIAlertControllerStyle.ActionSheet);
+            var emptyFieldsAlert = UIAlertController.Create("Oops", "We can't proceed because at least one of the fields or the photo is blank.Please note that all fields are required.", UIAlertControllerStyle.ActionSheet);
             var cancelAction = UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, null);
             emptyFieldsAlert.AddAction(cancelAction);
             SetUpPopover(emptyFieldsAlert, TableView.CellAt(NSIndexPath.FromRowSection(0, 0)));
             PresentViewController(emptyFieldsAlert, true, null);
+        }
+
+        private void CreateAddedRestaurantAlertController(string restaurantName)
+        {
+            var addedRestaurantAlert = UIAlertController.Create("Success!", restaurantName + " restaurant has been added.", UIAlertControllerStyle.ActionSheet);
+            var cancelAction = UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, (obj) => { AddRestaurantCloseDelegate(); });
+            addedRestaurantAlert.AddAction(cancelAction);
+            SetUpPopover(addedRestaurantAlert, TableView.CellAt(NSIndexPath.FromRowSection(0, 0)));
+            PresentViewController(addedRestaurantAlert, true, null);
         }
 
         private void SetDinamicLabelsSize()
@@ -274,6 +292,11 @@ namespace FoodPin
             var hideKeyboard = new UITapGestureRecognizer((obj) => View.EndEditing(true));
             hideKeyboard.CancelsTouchesInView = false;
             View.AddGestureRecognizer(hideKeyboard);
+        }
+
+        private void OnImageSet(bool wasImageSet)
+        {
+            _wasImageSet = wasImageSet;
         }
     }
 }

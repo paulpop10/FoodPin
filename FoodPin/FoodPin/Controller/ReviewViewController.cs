@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using CoreGraphics;
 using FoodPin.Extensions;
+using FoodPin.Model;
 using Foundation;
 using UIKit;
 
@@ -19,7 +20,7 @@ namespace FoodPin
         {
         }
 
-        public Restaurant Restaurant { get; set; }
+        public RestaurantMO RestaurantMO { get; set; }
 
         public Action CloseDelegate { get; set; }
 
@@ -42,11 +43,17 @@ namespace FoodPin
 
         private void CustomizeBackgroundImage()
         {
-            BackgroundImageView.Image = Restaurant.GetImage();
+            BackgroundImageView.Image = RestaurantMO.GetImage();
             var blurEffect = UIBlurEffect.FromStyle(UIBlurEffectStyle.Light);
             var blurEffectView = new UIVisualEffectView(blurEffect);
             blurEffectView.Frame = View.Bounds;
             BackgroundImageView.AddSubview(blurEffectView);
+
+            blurEffectView.TranslatesAutoresizingMaskIntoConstraints = false;
+            blurEffectView.TopAnchor.ConstraintEqualTo(BackgroundImageView.TopAnchor).Active = true;
+            blurEffectView.BottomAnchor.ConstraintEqualTo(BackgroundImageView.BottomAnchor).Active = true;
+            blurEffectView.LeftAnchor.ConstraintEqualTo(BackgroundImageView.LeftAnchor).Active = true;
+            blurEffectView.RightAnchor.ConstraintEqualTo(BackgroundImageView.RightAnchor).Active = true;
         }
 
         private void SetAnimationStartState()

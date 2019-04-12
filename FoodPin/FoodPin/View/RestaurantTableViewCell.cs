@@ -1,5 +1,7 @@
 using System;
+using FoodPin.Controller;
 using FoodPin.Extensions;
+using FoodPin.Model;
 using Foundation;
 using UIKit;
 
@@ -7,28 +9,30 @@ namespace FoodPin
 {
     public partial class RestaurantTableViewCell : UITableViewCell
     {
-        private Restaurant _restaurant;
+        private RestaurantMO _restaurantMO;
 
         public RestaurantTableViewCell(IntPtr handle) : base(handle)
         {
         }
 
-        public void SetWithRestaurant(Restaurant restaurant)
+        public void SetWithRestaurant(RestaurantMO restaurantMO)
         {
-            _restaurant = restaurant;
-            ThumbnailImageView.Image = _restaurant.GetImage();
-            NameLabel.Text = _restaurant.Name;
+            _restaurantMO = restaurantMO;
+            ThumbnailImageView.Image = _restaurantMO.GetImage();
+            NameLabel.Text = _restaurantMO.Name;
             NameLabel.Lines = 0;
-            TypeLabel.Text = _restaurant.Type;
+            TypeLabel.Text = _restaurantMO.Type;
             TypeLabel.Lines = 0;
-            LocationLabel.Text = _restaurant.Location;
+            LocationLabel.Text = _restaurantMO.Location;
             LocationLabel.Lines = 0;
         }
 
         public void OnCheckInClicked()
         {
-            var isVisited = !_restaurant.IsVisited;
-            _restaurant.IsVisited = isVisited;
-        }
+            var dataBaseConnection = DataBaseConnection.Instance;
+            var isVisited = !_restaurantMO.IsVisited;
+            _restaurantMO.IsVisited = isVisited;
+            dataBaseConnection.Conn.Update(_restaurantMO);
+        }     
     }
 } 

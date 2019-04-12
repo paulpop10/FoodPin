@@ -1,4 +1,6 @@
-﻿using Foundation;
+﻿using FoodPin.Controller;
+using FoodPin.Model;
+using Foundation;
 using UIKit;
 
 namespace FoodPin
@@ -18,6 +20,8 @@ namespace FoodPin
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
+            var dataBaseConnection = DataBaseConnection.Instance;
+            dataBaseConnection.Conn.CreateTable<RestaurantMO>();
             SetBackButtonOnNavigationBar();
             return true;
         }

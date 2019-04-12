@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using CoreGraphics;
 using CoreLocation;
+using FoodPin.Model;
 using FoodPin.View;
 using Foundation;
 using MapKit;
@@ -15,7 +16,7 @@ namespace FoodPin
         {
         }
 
-        public Restaurant Restaurant { get; set; }
+        public RestaurantMO RestaurantMO { get; set; }
 
         public override void ViewDidLoad()
         {
@@ -39,7 +40,7 @@ namespace FoodPin
         public void SetAnnotation()
         {
             var geoCoder = new CLGeocoder();
-            geoCoder.GeocodeAddress(Restaurant.Location, AnnotationHandler);
+            geoCoder.GeocodeAddress(RestaurantMO.Location, AnnotationHandler);
         }
 
         private void AnnotationHandler(CLPlacemark[] placemarks, NSError error)
@@ -53,8 +54,8 @@ namespace FoodPin
             {
                 var placemark = placemarks[0];
                 var annotation = new MKPointAnnotation(); 
-                annotation.Title = Restaurant.Name;
-                annotation.Subtitle = Restaurant.Type;
+                annotation.Title = RestaurantMO.Name;
+                annotation.Subtitle = RestaurantMO.Type;
                 var location = placemark.Location;
                 if (location != null)
                 {

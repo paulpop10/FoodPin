@@ -31,7 +31,7 @@ namespace FoodPin
             var headerView = new RestaurantDetailHeaderView();
             headerView.SetNameLabel(Restaurant.Name);
             headerView.SetTypeLabel(Restaurant.Type);
-            headerView.SetHeaderImageView(Restaurant.GetImage());
+            ////headerView.SetHeaderImageView(RestaurantMO.GetImage());
             UIImage image = Restaurant.IsVisited ? UIImage.FromBundle("CheckmarkImageView") : null;
             headerView.SetHeartImageView(image);
             return headerView;
