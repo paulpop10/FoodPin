@@ -137,6 +137,12 @@
     <ImageAsset Include="Assets.xcassets\plus.imageset\plus.pdf" />
     <ImageAsset Include="Assets.xcassets\save.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\save.imageset\save.pdf" />
+    <ImageAsset Include="Assets.xcassets\onboarding-1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\onboarding-1.imageset\onboarding-1.pdf" />
+    <ImageAsset Include="Assets.xcassets\onboarding-2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\onboarding-2.imageset\onboarding-2.pdf" />
+    <ImageAsset Include="Assets.xcassets\onboarding-3.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\onboarding-3.imageset\onboarding-3.pdf" />
     <ImageAsset Include="Assets.xcassets\emptyView.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\emptyView.imageset\empty.pdf" />
   </ItemGroup>
@@ -192,12 +198,18 @@
     <Folder Include="Assets.xcassets\save.imageset\" />
     <Folder Include="Assets.xcassets\emptyView.imageset\" />
     <Folder Include="Assets.xcassets\emptyView.imageset\" />
+    <Folder Include="Assets.xcassets\onboarding-1.imageset\" />
+    <Folder Include="Assets.xcassets\onboarding-2.imageset\" />
+    <Folder Include="Assets.xcassets\onboarding-3.imageset\" />
+    <Folder Include="Assets.xcassets\emptyView.imageset\" />
+    <Folder Include="Assets.xcassets\emptyView.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\Main.storyboard" />
     <InterfaceDefinition Include="Storyboard\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="View\RestaurantDetailHeaderView.xib" />
     <InterfaceDefinition Include="View\RestaurantDetailIconTextCell.xib" />
+    <InterfaceDefinition Include="Storyboard\Onboarding.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -329,6 +341,25 @@
     <Compile Include="Model\RestaurantMO.cs" />
     <Compile Include="Controller\DataBaseConnection.cs" />
     <Compile Include="View\SearchControllerDelegate.cs" />
+    <Compile Include="Controller\WalkthroughContentViewController.cs" />
+    <Compile Include="Controller\WalkthroughContentViewController.designer.cs">
+      <DependentUpon>WalkthroughContentViewController.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\PageViewControllerDataSource.cs" />
+    <Compile Include="Controller\WalkthroughPageViewController.cs" />
+    <Compile Include="Controller\WalkthroughPageViewController.designer.cs">
+      <DependentUpon>WalkthroughPageViewController.cs</DependentUpon>
+            <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\WalkthroughViewController.cs" />
+    <Compile Include="Controller\WalkthroughViewController.designer.cs">
+      <DependentUpon>WalkthroughViewController.cs</DependentUpon>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\PageViewControllerDelegate.cs" />
+    <Compile Include="View\WalkthroughViewControllerDelegate.cs" />
+    <Compile Include="View\IWalkthroughPageViewControllerDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OFL.txt" />

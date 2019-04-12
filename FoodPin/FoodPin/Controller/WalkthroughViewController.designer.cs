@@ -11,36 +11,36 @@ using UIKit;
 
 namespace FoodPin
 {
-    [Register ("NewRestaurantDetailViewController")]
-    partial class NewRestaurantDetailViewController
+    [Register ("WalkthroughViewController")]
+    partial class WalkthroughViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView FooterView { get; set; }
+        UIKit.UIButton NextButton { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        FoodPin.RestaurantDetailHeaderView HeaderView { get; set; }
+        UIKit.UIPageControl PageControl { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton RateButton { get; set; }
+        UIKit.UIButton SkipButton { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (FooterView != null) {
-                FooterView.Dispose ();
-                FooterView = null;
+            if (NextButton != null) {
+                NextButton.Dispose ();
+                NextButton = null;
             }
 
-            if (HeaderView != null) {
-                HeaderView.Dispose ();
-                HeaderView = null;
+            if (PageControl != null) {
+                PageControl.Dispose ();
+                PageControl = null;
             }
 
-            if (RateButton != null) {
-                RateButton.Dispose ();
-                RateButton = null;
+            if (SkipButton != null) {
+                SkipButton.Dispose ();
+                SkipButton = null;
             }
         }
     }

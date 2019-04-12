@@ -64,3 +64,4 @@ AppPackages/
 BundleArtifacts/
 Backup*/
 */.vs
+storage.ide-wal

@@ -1,7 +1,6 @@
 {
   "images": [
     {
-      "filename": "empty.pdf",
       "idiom": "universal"
     },
     {
@@ -17,6 +16,7 @@
       "idiom": "universal"
     },
     {
+      "filename": "empty.pdf",
       "idiom": "iphone"
     },
     {
