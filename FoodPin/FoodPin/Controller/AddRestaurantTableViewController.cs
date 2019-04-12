@@ -221,10 +221,8 @@ namespace FoodPin
         private void SetNewRestaurantData()
         {
             var dataBaseConnection = DataBaseConnection.Instance;
-            var maxPk = dataBaseConnection.Conn.Table<RestaurantMO>().OrderByDescending(c => c.Id).FirstOrDefault();
             RestaurantMO restaurantMO = new RestaurantMO()
             {
-                Id = maxPk == null ? 1 : maxPk.Id + 1,
                 Name = RestaurantNameTextField.Text,
                 Type = RestaurantTypeTextField.Text,
                 Location = RestaurantAddressTextField.Text,

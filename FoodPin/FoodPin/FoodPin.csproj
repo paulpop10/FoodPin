@@ -207,13 +207,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Controller\RestaurantDetailViewController.cs">
-      <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
-    </Compile>
-    <Compile Include="Controller\RestaurantDetailViewController.designer.cs">
-      <DependentUpon>RestaurantDetailViewController.cs</DependentUpon>
-      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
-    </Compile>
     <Compile Include="Controller\RestaurantTableViewController.cs">
       <ExcludeFromStyleCop>false</ExcludeFromStyleCop>
     </Compile>
