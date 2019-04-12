@@ -10,7 +10,8 @@ namespace FoodPin
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var cell = tableView.DequeueReusableCell(CellIdentifier) as RestaurantTableViewCell;
-            cell.SetWithRestaurant(_restaurantsMO[indexPath.Row]);
+            var restaurant = _searchController.Active ? _searchResultsMO[indexPath.Row]  : _restaurantsMO[indexPath.Row];
+            cell.SetWithRestaurant(restaurant);
             return cell;
         }
 
@@ -21,7 +22,12 @@ namespace FoodPin
 
         public override nint RowsInSection(UITableView tableView, nint section)
         {
-            return _restaurantsMO.Count;
+            return _searchController.Active ? _searchResultsMO.Count : _restaurantsMO.Count;
+        }
+             
+        public override bool CanEditRow(UITableView tableView, NSIndexPath indexPath)
+        {
+            return !_searchController.Active;
         }
     }
 }

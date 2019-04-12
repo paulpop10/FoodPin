@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using FoodPin.Controller;
 using FoodPin.Extensions;
 using FoodPin.Model;
+using FoodPin.View;
 using Foundation;
 using UIKit;
 
@@ -11,8 +13,11 @@ namespace FoodPin
     public partial class RestaurantTableViewController : UITableViewController
     {
         private const string CellIdentifier = "datacell";
-        private DataBaseConnection dataBaseConnection;
+        private DataBaseConnection _dataBaseConnection;
+        private UISearchController _searchController;
         private List<RestaurantMO> _restaurantsMO = new List<RestaurantMO>();
+        private IEnumerable<RestaurantMO> _searchResults;
+        private List<RestaurantMO> _searchResultsMO;
 
         public RestaurantTableViewController(IntPtr handle) : base(handle)
         {
@@ -21,29 +26,35 @@ namespace FoodPin
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            dataBaseConnection = DataBaseConnection.Instance;
+            _dataBaseConnection = DataBaseConnection.Instance;
             TableView.CellLayoutMarginsFollowReadableWidth = true;
             SetNavigationController();
             SetCustomFontForNavigationBar();
-
-            TableView.BackgroundView = EmptyListImageView;
-            if (TableView.BackgroundView != null)
-            {
-                TableView.BackgroundView.Hidden = true;
-            }
+            CustomizeTableView();
+            CreateSearchBar();
+            DefinesPresentationContext = true;
         }
 
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-            _restaurantsMO = dataBaseConnection.Conn.Table<RestaurantMO>().ToList();
+            _restaurantsMO = _dataBaseConnection.Conn.Table<RestaurantMO>().ToList();
             TableView.ReloadData();
             SetEmptyTableViewBackground();
             if (NavigationController != null)
             {
                 NavigationController.HidesBarsOnSwipe = true;
             }
+
+            _searchController.SearchBar.Hidden = false;
         }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            _searchController.SearchBar.Hidden = true;
+            base.ViewWillDisappear(animated);
+        }
+
         #endregion
         #region Table View Delegate
         public override UISwipeActionsConfiguration GetTrailingSwipeActionsConfiguration(UITableView tableView, NSIndexPath indexPath)
@@ -54,8 +65,10 @@ namespace FoodPin
              (Delete, sourceView, completionHandler) =>
              {
                  var restaurantId = _restaurantsMO[indexPath.Row].Id;
-                 dataBaseConnection.Conn.Table<RestaurantMO>().Delete(x => x.Id == restaurantId);
+                 _dataBaseConnection.Conn.Table<RestaurantMO>().Delete(x => x.Id == restaurantId);
+                 
                  _restaurantsMO.RemoveAt(indexPath.Row);
+                 TableView.ReloadData();
                  SetEmptyTableViewBackground();
                  completionHandler(true);
              });
@@ -115,7 +128,7 @@ namespace FoodPin
                 if (indexpath != null)
                 {
                     var destinationController = segue.DestinationViewController as NewRestaurantDetailViewController;
-                    destinationController.RestaurantMO = _restaurantsMO[indexpath.Row];
+                    destinationController.RestaurantMO = _searchController.Active ? _searchResultsMO[indexpath.Row] : _restaurantsMO[indexpath.Row];
                 }
             }
             else
@@ -199,6 +212,42 @@ namespace FoodPin
                 }
 
                 TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
+            }
+        }
+
+        private void FilterContent(string searchedText)
+        {
+             _searchResults = from RestaurantMO in _restaurantsMO where (RestaurantMO.Name.StartsWith(searchedText, StringComparison.InvariantCultureIgnoreCase) || RestaurantMO.Location.Contains(searchedText, StringComparison.InvariantCultureIgnoreCase)) select RestaurantMO;
+             _searchResultsMO = _searchResults.ToList<RestaurantMO>();
+        }
+
+        private void OnSearchTextUpdated(string searchText)
+        {
+            if (searchText != null)
+            {
+                FilterContent(searchText);
+                TableView.ReloadData();
+            }
+        }
+
+        private void CreateSearchBar()
+        {
+            _searchController = new UISearchController(searchResultsController: null);
+            TableView.TableHeaderView = _searchController.SearchBar;
+            _searchController.SearchResultsUpdater = new SearchControllerDelegate(OnSearchTextUpdated);
+            _searchController.DimsBackgroundDuringPresentation = false;
+            _searchController.SearchBar.Placeholder = "Search restaurants...";
+            _searchController.SearchBar.BarTintColor = UIColor.White;
+            _searchController.SearchBar.BackgroundImage = new UIImage();
+            _searchController.SearchBar.TintColor = UIColor.FromRGB(231, 76, 60);
+        }
+
+        private void CustomizeTableView()
+        {
+            TableView.BackgroundView = EmptyListImageView;
+            if (TableView.BackgroundView != null)
+            {
+                TableView.BackgroundView.Hidden = true;
             }
         }
         #endregion

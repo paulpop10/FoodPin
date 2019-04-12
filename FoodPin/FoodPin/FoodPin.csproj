@@ -191,6 +191,7 @@
     <Folder Include="Assets.xcassets\plus.imageset\" />
     <Folder Include="Assets.xcassets\save.imageset\" />
     <Folder Include="Assets.xcassets\emptyView.imageset\" />
+    <Folder Include="Assets.xcassets\emptyView.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\Main.storyboard" />
@@ -327,6 +328,7 @@
     <Compile Include="View\ImagePickerControllerDelegate.cs" />
     <Compile Include="Model\RestaurantMO.cs" />
     <Compile Include="Controller\DataBaseConnection.cs" />
+    <Compile Include="View\SearchControllerDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OFL.txt" />
