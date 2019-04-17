@@ -1,4 +1,7 @@
 using System;
+using System.Threading.Tasks;
+using CoreFoundation;
+using DeviceCheck;
 using FoodPin.Controller;
 using FoodPin.Model;
 using FoodPin.View;
@@ -220,7 +223,6 @@ namespace FoodPin
 
         private void SetNewRestaurantData()
         {
-            var dataBaseConnection = DataBaseConnection.Instance;
             RestaurantMO restaurantMO = new RestaurantMO()
             {
                 Name = RestaurantNameTextField.Text,
@@ -232,8 +234,19 @@ namespace FoodPin
                 Image = PhotoImageView.Image.AsPNG().ToArray(),
                 Rating = string.Empty
             };
-            dataBaseConnection.Conn.Insert(restaurantMO);
-            CreateAddedRestaurantAlertController(restaurantMO.Name);
+            InsertNewRestaurant(restaurantMO);
+        }
+
+        private async void InsertNewRestaurant(RestaurantMO restaurantMO)
+        {
+            var dataBaseConnection = DataBaseConnection.Instance;
+            if (dataBaseConnection != null)
+            {
+                dataBaseConnection.Conn.Insert(restaurantMO);     
+            }
+            ////Required by the async method
+            await Task.Delay(1);
+            InvokeOnMainThread(() => { CreateAddedRestaurantAlertController(restaurantMO.Name); });
         }
 
         private void CreateFieldsNotFilledAlertController()
