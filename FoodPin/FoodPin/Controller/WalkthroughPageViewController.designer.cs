@@ -11,8 +11,8 @@ using UIKit;
 
 namespace FoodPin
 {
-    [Register ("AddRestaurantNavigationController")]
-    partial class AddRestaurantNavigationController
+    [Register ("WalkthroughPageViewController")]
+    partial class WalkthroughPageViewController
     {
         void ReleaseDesignerOutlets ()
         {

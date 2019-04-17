@@ -13,6 +13,7 @@ namespace FoodPin
     public partial class RestaurantTableViewController : UITableViewController
     {
         private const string CellIdentifier = "datacell";
+        private const string ViewedWalkthrough = "hasViewedWalkthrough";
         private DataBaseConnection _dataBaseConnection;
         private UISearchController _searchController;
         private List<RestaurantMO> _restaurantsMO = new List<RestaurantMO>();
@@ -55,6 +56,22 @@ namespace FoodPin
             base.ViewWillDisappear(animated);
         }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+            if (NSUserDefaults.StandardUserDefaults.BoolForKey(ViewedWalkthrough))
+            {
+                return;
+            }
+
+            var storyboard = UIStoryboard.FromName("Onboarding", null);
+            var walkthroughViewController = storyboard.InstantiateViewController(nameof(WalkthroughViewController)) as WalkthroughViewController;
+            if (walkthroughViewController != null)
+            {
+                PresentViewController(walkthroughViewController, true, null);
+            }     
+        }
+
         #endregion
         #region Table View Delegate
         public override UISwipeActionsConfiguration GetTrailingSwipeActionsConfiguration(UITableView tableView, NSIndexPath indexPath)
@@ -66,7 +83,6 @@ namespace FoodPin
              {
                  var restaurantId = _restaurantsMO[indexPath.Row].Id;
                  _dataBaseConnection.Conn.Table<RestaurantMO>().Delete(x => x.Id == restaurantId);
-                 
                  _restaurantsMO.RemoveAt(indexPath.Row);
                  TableView.ReloadData();
                  SetEmptyTableViewBackground();
