@@ -23,6 +23,7 @@ namespace FoodPin
             var dataBaseConnection = DataBaseConnection.Instance;
             dataBaseConnection.Conn.CreateTable<RestaurantMO>();
             SetBackButtonOnNavigationBar();
+            TabBarCustomization();
             return true;
         }
 
@@ -62,6 +63,12 @@ namespace FoodPin
             var backButtonImage = UIImage.FromBundle("back");
             UINavigationBar.Appearance.BackIndicatorImage = backButtonImage;
             UINavigationBar.Appearance.BackIndicatorTransitionMaskImage = backButtonImage;
+        }
+
+        private void TabBarCustomization()
+        {
+            UITabBar.Appearance.TintColor = UIColor.FromRGB(231, 76, 60);
+            UITabBar.Appearance.BarTintColor = UIColor.Black;
         }
     }
 }

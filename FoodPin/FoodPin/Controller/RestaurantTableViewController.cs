@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FoodPin.Controller;
 using FoodPin.Extensions;
 using FoodPin.Model;
@@ -39,8 +40,7 @@ namespace FoodPin
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-            _restaurantsMO = _dataBaseConnection.Conn.Table<RestaurantMO>().ToList();
-            TableView.ReloadData();
+            RetrieveRestaurantsList();
             SetEmptyTableViewBackground();
             if (NavigationController != null)
             {
@@ -145,6 +145,7 @@ namespace FoodPin
                 {
                     var destinationController = segue.DestinationViewController as NewRestaurantDetailViewController;
                     destinationController.RestaurantMO = _searchController.Active ? _searchResultsMO[indexpath.Row] : _restaurantsMO[indexpath.Row];
+                    destinationController.HidesBottomBarWhenPushed = true;
                 }
             }
             else
@@ -153,10 +154,22 @@ namespace FoodPin
                 var destinationController = segue.DestinationViewController as AddRestaurantNavigationController;
                 var addRestaurantTableViewController = destinationController.TopViewController as AddRestaurantTableViewController;
                 addRestaurantTableViewController.AddRestaurantCloseDelegate = UnwindToHome;
+                addRestaurantTableViewController.HidesBottomBarWhenPushed = true;
             }
         }
         #endregion
         #region Extra methods
+        private async void RetrieveRestaurantsList()
+        {
+            if (_dataBaseConnection != null)
+            {
+                _restaurantsMO = _dataBaseConnection.Conn.Table<RestaurantMO>().ToList();
+            }
+            ////Required by the async method
+            await Task.Delay(1);
+            InvokeOnMainThread(() => { TableView.ReloadData(); });
+        }
+
         private void OnCallActionSelected(UIAlertAction obj)
         {
             var alertmessage = UIAlertController.Create("Service Unavailable", "Sorry, the call feature is not available yet.Please retry later.", UIAlertControllerStyle.Alert);

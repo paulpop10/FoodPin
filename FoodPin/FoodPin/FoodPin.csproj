@@ -145,6 +145,12 @@
     <ImageAsset Include="Assets.xcassets\onboarding-3.imageset\onboarding-3.pdf" />
     <ImageAsset Include="Assets.xcassets\emptyView.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\emptyView.imageset\empty.pdf" />
+    <ImageAsset Include="Assets.xcassets\favorite.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\favorite.imageset\favorite.pdf" />
+    <ImageAsset Include="Assets.xcassets\discover.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\discover.imageset\discover.pdf" />
+    <ImageAsset Include="Assets.xcassets\about.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\about.imageset\about.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -203,6 +209,10 @@
     <Folder Include="Assets.xcassets\onboarding-3.imageset\" />
     <Folder Include="Assets.xcassets\emptyView.imageset\" />
     <Folder Include="Assets.xcassets\emptyView.imageset\" />
+    <Folder Include="Assets.xcassets\favorite.imageset\" />
+    <Folder Include="Assets.xcassets\discover.imageset\" />
+    <Folder Include="Assets.xcassets\about.imageset\" />
+    <Folder Include="Resources\Storyboard\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\Main.storyboard" />
@@ -210,6 +220,8 @@
     <InterfaceDefinition Include="View\RestaurantDetailHeaderView.xib" />
     <InterfaceDefinition Include="View\RestaurantDetailIconTextCell.xib" />
     <InterfaceDefinition Include="Storyboard\Onboarding.storyboard" />
+    <InterfaceDefinition Include="Storyboard\About.storyboard" />
+    <InterfaceDefinition Include="Storyboard\Discover.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
