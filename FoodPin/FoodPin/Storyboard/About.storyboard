@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="INW-8D-d38">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -12,18 +12,41 @@
         <!--About-->
         <scene sceneID="z8r-H7-02P">
             <objects>
-                <tableViewController id="ohh-3f-Ytv" sceneMemberID="viewController">
+                <tableViewController id="ohh-3f-Ytv" customClass="AboutTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jpU-Vh-gQK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="m58-ie-gNs">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="120"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodpin-logo" translatesAutoresizingMaskIntoConstraints="NO" id="bLD-0H-ukG">
+                                    <rect key="frame" x="441" y="33.5" width="142" height="53"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="bLD-0H-ukG" firstAttribute="centerY" secondItem="m58-ie-gNs" secondAttribute="centerY" id="l8b-8n-GHp"/>
+                                <constraint firstItem="bLD-0H-ukG" firstAttribute="centerX" secondItem="m58-ie-gNs" secondAttribute="centerX" id="rid-8n-l1a"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCellIdentifier" id="zGa-ct-chu">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCellIdentifier" textLabel="1ca-ep-2JH" style="IBUITableViewCellStyleDefault" id="zGa-ct-chu">
+                                <rect key="frame" x="0.0" y="148" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zGa-ct-chu" id="ecw-IE-n9G">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1ca-ep-2JH">
+                                            <rect key="frame" x="20" y="0.0" width="984" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -33,10 +56,50 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="About" id="7zA-R9-SpT"/>
+                    <connections>
+                        <segue destination="McJ-iM-xfI" kind="show" identifier="showWebView" id="Axy-dW-XQq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFW-9X-Ari" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1265" y="1359"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gRB-3L-7LD">
+            <objects>
+                <viewController id="McJ-iM-xfI" sceneMemberID="viewController" customClass="WebViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fea-Fs-SUo"/>
+                        <viewControllerLayoutGuide type="bottom" id="MYl-ru-Xf9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ue3-X7-885">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQs-Yh-KcI">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wQs-Yh-KcI" firstAttribute="top" secondItem="ue3-X7-885" secondAttribute="top" id="7gL-km-pSn"/>
+                            <constraint firstAttribute="trailing" secondItem="wQs-Yh-KcI" secondAttribute="trailing" id="Fkh-cb-tHm"/>
+                            <constraint firstAttribute="bottom" secondItem="wQs-Yh-KcI" secondAttribute="bottom" id="u2t-2s-HUg"/>
+                            <constraint firstItem="wQs-Yh-KcI" firstAttribute="leading" secondItem="ue3-X7-885" secondAttribute="leading" id="xl7-hL-P14"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="WebView" destination="wQs-Yh-KcI" id="name-outlet-wQs-Yh-KcI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYT-LN-oqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2211.594" y="1358.705"/>
         </scene>
         <!--About-->
         <scene sceneID="vh8-G2-5B3">
@@ -44,7 +107,7 @@
                 <navigationController id="INW-8D-d38" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About" image="about" id="cE9-6H-fJz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g8S-5z-Wb3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="1024" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -53,10 +116,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w9w-OH-ArS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349" y="1359"/>
+            <point key="canvasLocation" x="-58" y="1366"/>
         </scene>
     </scenes>
     <resources>
         <image name="about" width="23" height="21"/>
+        <image name="foodpin-logo" width="142" height="53"/>
     </resources>
 </document>
