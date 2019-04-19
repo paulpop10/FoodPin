@@ -151,6 +151,18 @@
     <ImageAsset Include="Assets.xcassets\discover.imageset\discover.pdf" />
     <ImageAsset Include="Assets.xcassets\about.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\about.imageset\about.pdf" />
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\twitter.imageset\twitter.pdf" />
+    <ImageAsset Include="Assets.xcassets\store.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\store.imageset\store.pdf" />
+    <ImageAsset Include="Assets.xcassets\instagram.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\instagram.imageset\instagram.pdf" />
+    <ImageAsset Include="Assets.xcassets\foodpin-logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\foodpin-logo.imageset\foodpin-logo.pdf" />
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\facebook.pdf" />
+    <ImageAsset Include="Assets.xcassets\chat.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\chat.imageset\chat.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -213,6 +225,12 @@
     <Folder Include="Assets.xcassets\discover.imageset\" />
     <Folder Include="Assets.xcassets\about.imageset\" />
     <Folder Include="Resources\Storyboard\" />
+    <Folder Include="Assets.xcassets\twitter.imageset\" />
+    <Folder Include="Assets.xcassets\store.imageset\" />
+    <Folder Include="Assets.xcassets\instagram.imageset\" />
+    <Folder Include="Assets.xcassets\foodpin-logo.imageset\" />
+    <Folder Include="Assets.xcassets\facebook.imageset\" />
+    <Folder Include="Assets.xcassets\chat.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\Main.storyboard" />
@@ -372,6 +390,16 @@
     <Compile Include="View\PageViewControllerDelegate.cs" />
     <Compile Include="View\WalkthroughViewControllerDelegate.cs" />
     <Compile Include="View\IWalkthroughPageViewControllerDelegate.cs" />
+    <Compile Include="Controller\AboutTableViewController.cs" />
+    <Compile Include="Controller\AboutTableViewController.designer.cs">
+      <DependentUpon>AboutTableViewController.cs</DependentUpon>
+            <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Controller\WebViewController.cs" />
+    <Compile Include="Controller\WebViewController.designer.cs">
+      <DependentUpon>WebViewController.cs</DependentUpon>
+             <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OFL.txt" />

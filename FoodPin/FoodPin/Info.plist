@@ -8,8 +8,6 @@
 	<string>com.companyname.FoodPin</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -48,5 +46,16 @@
 	<string>You need to grant the app access to your photo library so you can pick your favorite restaurant photo.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>You need to grant the app access to your camera in order to take photos.</string>
+	<key>Custom Property</key>
+	<string></string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	<key>CFBundleExecutable</key>
+	<string></string>
 </dict>
 </plist>
