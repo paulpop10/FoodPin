@@ -15,7 +15,7 @@ namespace FoodPin.Extensions
 
         public static NSObject[] GetActivityItems(this RestaurantMO restaurantMO)
         {
-            var defaultText = "Just checking in at " + restaurantMO.Name;
+            var defaultText = AppResources.CheckInWarning + restaurantMO.Name;
             var activityItems = new NSObject[] { };
             var imageToLoad = restaurantMO.GetImage();
             if (imageToLoad != null)

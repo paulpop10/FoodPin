@@ -1,5 +1,6 @@
 ﻿using FoodPin.Controller;
 using FoodPin.Model;
+using FoodPin.View;
 using Foundation;
 using UIKit;
 
@@ -24,6 +25,7 @@ namespace FoodPin
             dataBaseConnection.Conn.CreateTable<RestaurantMO>();
             SetBackButtonOnNavigationBar();
             TabBarCustomization();
+            Localization();
             return true;
         }
 
@@ -69,6 +71,12 @@ namespace FoodPin
         {
             UITabBar.Appearance.TintColor = UIColor.FromRGB(231, 76, 60);
             UITabBar.Appearance.BarTintColor = UIColor.Black;
+        }
+
+        private void Localization()
+        {
+            var localize = new Localize();
+            AppResources.Culture = localize.GetCurrentCultureInfo();
         }
     }
 }

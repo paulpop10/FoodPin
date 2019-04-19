@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+
+    <data name="Feedback" xml:space="preserve">
+        <value>提供意見</value>
+        <comment>feedback field</comment>
+    </data>
+    <data name="FollowUs" xml:space="preserve">
+        <value>追蹤我們</value>
+        <comment>follow us field</comment>
+    </data>
+     <data name="RateUs" xml:space="preserve">
+        <value>在App Store评价我们</value>
+        <comment>rate us on app store</comment>
+    </data>
+    <data name="TellTheFeedback" xml:space="preserve">
+        <value>告诉我们您的反馈</value>
+        <comment>tell the feedback</comment>
+    </data>
+    <data name="CheckIn" xml:space="preserve">
+        <value>报到</value>
+        <comment>Check in</comment>
+    </data>
+    <data name="UndoCheckIn" xml:space="preserve">
+        <value>撤消签入</value>
+        <comment>undo check in</comment>
+    </data>
+    <data name="Share" xml:space="preserve">
+        <value>分享</value>
+        <comment>share</comment>
+    </data>
+    <data name="Delete" xml:space="preserve">
+        <value>删除</value>
+        <comment>delete</comment>
+    </data>
+    <data name="SearchRestaurants" xml:space="preserve">
+        <value>搜索餐馆..</value>
+        <comment>search restaurants</comment>
+    </data>
+    
+     <data name="NewRestaurantTitle" xml:space="preserve">
+        <value>新餐厅</value>
+        <comment>new restaurant title</comment>
+    </data>
+     <data name="RestaurantNameLabel" xml:space="preserve">
+        <value>名称</value>
+        <comment>restaurant name label</comment>
+    </data>
+     <data name="RestaurantTypeLabel" xml:space="preserve">
+        <value>类型</value>
+        <comment>restaurant type label</comment>
+    </data>
+     <data name="RestaurantAddressLabel" xml:space="preserve">
+        <value>地址</value>
+        <comment>restaurant address label</comment>
+    </data>
+     <data name="RestaurantPhoneLabel" xml:space="preserve">
+        <value>电话</value>
+        <comment>restaurant name label</comment>
+    </data>
+     <data name="RestaurantDescriptionLabel" xml:space="preserve">
+        <value>描述</value>
+        <comment>restaurant description label</comment>
+    </data>
+     <data name="RestaurantNameTextFieldPlaceholder" xml:space="preserve">
+        <value>填写餐厅名称</value>
+        <comment>restaurant name text field placeholder</comment>
+    </data>
+    <data name="RestaurantTypeTextFieldPlaceholder" xml:space="preserve">
+        <value>填写餐厅类型</value>
+        <comment>restaurant type text field placeholder</comment>
+    </data> 
+    <data name="RestaurantAddressTextFieldPlaceholder" xml:space="preserve">
+        <value>填写餐厅地址</value>
+        <comment>restaurant address text field placeholder</comment>
+    </data> 
+    <data name="RestaurantPhoneTextFieldPlaceholder" xml:space="preserve">
+        <value>填写餐厅电话号码</value>
+        <comment>restaurant phone text field placeholder</comment>
+    </data> 
+    <data name="RestaurantDescriptionTextViewPlaceholder" xml:space="preserve">
+        <value>一个很棒的餐厅尝试</value>
+        <comment>restaurant  description text view placeholder</comment>
+    </data>
+     <data name="NumbersOnlyWarning" xml:space="preserve">
+        <value>电话号码只能包含数字.</value>
+        <comment>numbers only warning</comment>
+    </data>
+     <data name="AddedRestaurantWarning" xml:space="preserve">
+        <value> 餐厅已添加.</value>
+        <comment>added restaurant warning</comment>
+    </data>
+     <data name="Success" xml:space="preserve">
+        <value>成功!</value>
+        <comment>success</comment>
+    </data>
+     <data name="EmptyFieldsWarning" xml:space="preserve">
+        <value>我们无法继续，因为至少有一个字段或照片是空白的。请注意，所有字段都是必填字段.</value>
+        <comment>empty fields warning</comment>
+    </data>
+     <data name="ChoosingPhotoSource" xml:space="preserve">
+        <value>选择你的照片来源</value>
+        <comment>choosing photo source</comment>
+    </data>
+    <data name="Camera" xml:space="preserve">
+        <value>相机</value>
+        <comment>camera</comment>
+    </data>
+     <data name="PhotoLibrary" xml:space="preserve">
+        <value>图片库</value>
+        <comment>photo library</comment>
+    </data>
+     <data name="Cancel" xml:space="preserve">
+        <value>取消</value>
+        <comment>cancel</comment>
+    </data>
+     <data name="CheckInWarning" xml:space="preserve">
+        <value>刚刚办理入住手续 </value>
+        <comment>check in warning</comment>
+    </data>  
+</root>
+
+

@@ -23,7 +23,9 @@ namespace FoodPin
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();         
-            CustomizeView();         
+            CustomizeView();
+            SetLabelsTexts();
+            SetTextFieldsPlaceholders();
         }
 
         public override void ViewWillAppear(bool animated)
@@ -42,10 +44,10 @@ namespace FoodPin
         {
            if (indexPath.Row == 0)
             {
-                var photoSourceRequestController = UIAlertController.Create(string.Empty, "Choose your photo source", UIAlertControllerStyle.ActionSheet);
-                var cameraAction = UIAlertAction.Create("Camera", UIAlertActionStyle.Default, CameraHandler);
-                var photoLibraryAction = UIAlertAction.Create("Photo Library", UIAlertActionStyle.Default, PhotoLibraryHandler);
-                var cancelAction = UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, null);
+                var photoSourceRequestController = UIAlertController.Create(string.Empty, AppResources.ChoosingPhotoSource, UIAlertControllerStyle.ActionSheet);
+                var cameraAction = UIAlertAction.Create(AppResources.Camera, UIAlertActionStyle.Default, CameraHandler);
+                var photoLibraryAction = UIAlertAction.Create(AppResources.PhotoLibrary, UIAlertActionStyle.Default, PhotoLibraryHandler);
+                var cancelAction = UIAlertAction.Create(AppResources.Cancel, UIAlertActionStyle.Cancel, null);
                 photoSourceRequestController.AddAction(cameraAction);
                 photoSourceRequestController.AddAction(photoLibraryAction);
                 photoSourceRequestController.AddAction(cancelAction);
@@ -115,6 +117,7 @@ namespace FoodPin
 
         private void CustomizeNavigationBar()
         {
+            NavigationItem.Title = AppResources.NewRestaurantTitle;
             if (NavigationController != null)
             {
                 NavigationController.NavigationBar.TintColor = UIColor.White;
@@ -251,7 +254,7 @@ namespace FoodPin
 
         private void CreateFieldsNotFilledAlertController()
         {
-            var emptyFieldsAlert = UIAlertController.Create("Oops", "We can't proceed because at least one of the fields or the photo is blank.Please note that all fields are required.", UIAlertControllerStyle.ActionSheet);
+            var emptyFieldsAlert = UIAlertController.Create("Oops", AppResources.EmptyFieldsWarning, UIAlertControllerStyle.ActionSheet);
             var cancelAction = UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, null);
             emptyFieldsAlert.AddAction(cancelAction);
             SetUpPopover(emptyFieldsAlert, TableView.CellAt(NSIndexPath.FromRowSection(0, 0)));
@@ -260,7 +263,7 @@ namespace FoodPin
 
         private void CreateAddedRestaurantAlertController(string restaurantName)
         {
-            var addedRestaurantAlert = UIAlertController.Create("Success!", restaurantName + " restaurant has been added.", UIAlertControllerStyle.ActionSheet);
+            var addedRestaurantAlert = UIAlertController.Create(AppResources.Success, restaurantName + AppResources.AddedRestaurantWarning, UIAlertControllerStyle.ActionSheet);
             var cancelAction = UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, (obj) => { AddRestaurantCloseDelegate(); });
             addedRestaurantAlert.AddAction(cancelAction);
             SetUpPopover(addedRestaurantAlert, TableView.CellAt(NSIndexPath.FromRowSection(0, 0)));
@@ -291,7 +294,7 @@ namespace FoodPin
 
         private void CreateOnlyNumbersAlertController()
         {
-            var onlyNumbersAlert = UIAlertController.Create("Oops", "The phone number should contain numbers only.", UIAlertControllerStyle.ActionSheet);
+            var onlyNumbersAlert = UIAlertController.Create("Oops", AppResources.NumbersOnlyWarning, UIAlertControllerStyle.ActionSheet);
             var cancelAction = UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, null);
             onlyNumbersAlert.AddAction(cancelAction);
             SetUpPopover(onlyNumbersAlert, TableView.CellAt(NSIndexPath.FromRowSection(0, 0)));
@@ -308,6 +311,24 @@ namespace FoodPin
         private void OnImageSet(bool wasImageSet)
         {
             _wasImageSet = wasImageSet;
+        }
+
+        private void SetLabelsTexts()
+        {
+            RestaurantNameLabel.Text = AppResources.RestaurantNameLabel;
+            RestaurantTypeLabel.Text = AppResources.RestaurantTypeLabel;
+            RestaurantAddressLabel.Text = AppResources.RestaurantAddressLabel;
+            RestaurantPhoneLabel.Text = AppResources.RestaurantPhoneLabel;
+            RestaurantDescriptionLabel.Text = AppResources.RestaurantDescriptionLabel;
+        }
+
+        private void SetTextFieldsPlaceholders()
+        {
+            RestaurantNameTextField.Placeholder = AppResources.RestaurantNameTextFieldPlaceholder;
+            RestaurantTypeTextField.Placeholder = AppResources.RestaurantTypeTextFieldPlaceholder;
+            RestaurantAddressTextField.Placeholder = AppResources.RestaurantAddressTextFieldPlaceholder;
+            RestaurantPhoneTextField.Placeholder = AppResources.RestaurantPhoneTextFieldPlaceholder;
+            RestaurantDescriptionTextView.Text = AppResources.RestaurantDescriptionTextViewPlaceholder;
         }
     }
 }
