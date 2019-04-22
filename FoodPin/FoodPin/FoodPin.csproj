@@ -231,6 +231,7 @@
     <Folder Include="Assets.xcassets\foodpin-logo.imageset\" />
     <Folder Include="Assets.xcassets\facebook.imageset\" />
     <Folder Include="Assets.xcassets\chat.imageset\" />
+    <Folder Include="Localization\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Storyboard\Main.storyboard" />
@@ -400,6 +401,11 @@
       <DependentUpon>WebViewController.cs</DependentUpon>
              <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\ILocalize.cs" />
+    <Compile Include="Localization\Localize.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OFL.txt" />
@@ -428,6 +434,14 @@
     <BundleResource Include="Resources\Fonts\GreatVibes-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AppResources.resx">
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppResources.de.resx" />
+    <EmbeddedResource Include="AppResources.zh.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\StyleCop.MSBuild.6.1.0\build\StyleCop.MSBuild.targets" Condition="Exists('..\packages\StyleCop.MSBuild.6.1.0\build\StyleCop.MSBuild.targets')" />

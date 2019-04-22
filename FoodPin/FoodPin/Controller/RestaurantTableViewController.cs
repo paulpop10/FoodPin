@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreSpotlight;
 using FoodPin.Controller;
 using FoodPin.Extensions;
 using FoodPin.Model;
@@ -78,7 +79,7 @@ namespace FoodPin
         {
             var deleteAction = UIContextualAction.FromContextualActionStyle(
              UIContextualActionStyle.Destructive,
-             "Delete",
+             AppResources.Delete,
              (Delete, sourceView, completionHandler) =>
              {
                  var restaurantId = _restaurantsMO[indexPath.Row].Id;
@@ -91,7 +92,7 @@ namespace FoodPin
 
             var shareAction = UIContextualAction.FromContextualActionStyle(
             UIContextualActionStyle.Normal,
-            "Share",
+            AppResources.Share,
             (Share, sourceView, completionHandler)
             =>
             {
@@ -114,7 +115,7 @@ namespace FoodPin
 
         public override UISwipeActionsConfiguration GetLeadingSwipeActionsConfiguration(UITableView tableView, NSIndexPath indexPath)
         {
-            var checkInAlertActionTitle = _restaurantsMO[indexPath.Row].IsVisited ? "Undo Check In" : "Check In";
+            var checkInAlertActionTitle = _restaurantsMO[indexPath.Row].IsVisited ? AppResources.UndoCheckIn : AppResources.CheckIn;
             var checkInAction = UIContextualAction.FromContextualActionStyle(
                 UIContextualActionStyle.Normal,
                 checkInAlertActionTitle,
@@ -265,7 +266,7 @@ namespace FoodPin
             TableView.TableHeaderView = _searchController.SearchBar;
             _searchController.SearchResultsUpdater = new SearchControllerDelegate(OnSearchTextUpdated);
             _searchController.DimsBackgroundDuringPresentation = false;
-            _searchController.SearchBar.Placeholder = "Search restaurants...";
+            _searchController.SearchBar.Placeholder = AppResources.SearchRestaurants;
             _searchController.SearchBar.BarTintColor = UIColor.White;
             _searchController.SearchBar.BackgroundImage = new UIImage();
             _searchController.SearchBar.TintColor = UIColor.FromRGB(231, 76, 60);

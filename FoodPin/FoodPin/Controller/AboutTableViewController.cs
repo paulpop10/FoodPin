@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Policy;
+using CoreSpotlight;
 using Foundation;
 using SafariServices;
 using UIKit;
@@ -9,10 +10,10 @@ namespace FoodPin
 {
     public partial class AboutTableViewController : UITableViewController
     {
-        private readonly List<string> _sectionTitles = new List<string> { "Feedback", "Follow Us" };
+        private readonly List<string> _sectionTitles = new List<string> { AppResources.Feedback, AppResources.FollowUs };
         private readonly List<List<(string image, string text, string link)>> _sectionContent = new List<List<(string image, string text, string link)>>
         {
-            new List<(string image, string text, string link)> { (image: "store", text: "Rate us on App Store", link: "https://www.apple.com/itunes/charts/paid-apps/"), (image: "chat", text: "Tell us your feedback", link: "http://www.appcoda.com/contact") },
+            new List<(string image, string text, string link)> { (image: "store", text: AppResources.RateUs, link: "https://www.apple.com/itunes/charts/paid-apps/"), (image: "chat", text: AppResources.TellTheFeedback, link: "http://www.appcoda.com/contact") },
             new List<(string image, string text, string link)> { (image: "twitter", text: "Twitter", link: "https://twitter.com/appcodamobile"), (image: "facebook", text: "Facebook", link: "https://facebook.com/appcodamobile"), (image: "instagram", text: "Instagram", link: "https://www.instagram.com/appcodadotcom") }
         };
 

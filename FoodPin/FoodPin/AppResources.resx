@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+
+    <data name="Feedback" xml:space="preserve">
+        <value>Feedback</value>
+        <comment>feedback field</comment>
+    </data>
+    <data name="FollowUs" xml:space="preserve">
+        <value>Follow us</value>
+        <comment>follow us field</comment>
+    </data>
+     <data name="RateUs" xml:space="preserve">
+        <value>Rate us on App Store</value>
+        <comment>rate us on app store</comment>
+    </data>
+    <data name="TellTheFeedback" xml:space="preserve">
+        <value>Tell us your feedback</value>
+        <comment>tell the feedback</comment>
+    </data>
+    <data name="CheckIn" xml:space="preserve">
+        <value>Check in</value>
+        <comment>Check in</comment>
+    </data>
+    <data name="UndoCheckIn" xml:space="preserve">
+        <value>Undo Check in</value>
+        <comment>undo check in</comment>
+    </data>
+    <data name="Share" xml:space="preserve">
+        <value>Share</value>
+        <comment>share</comment>
+    </data>
+    <data name="Delete" xml:space="preserve">
+        <value>Delete</value>
+        <comment>delete</comment>
+    </data>
+    <data name="SearchRestaurants" xml:space="preserve">
+        <value>Search restaurants..</value>
+        <comment>search restaurants</comment>
+    </data>
+    
+     <data name="NewRestaurantTitle" xml:space="preserve">
+        <value>New Restaurant</value>
+        <comment>new restaurant title</comment>
+    </data>
+     <data name="RestaurantNameLabel" xml:space="preserve">
+        <value>NAME</value>
+        <comment>restaurant name label</comment>
+    </data>
+     <data name="RestaurantTypeLabel" xml:space="preserve">
+        <value>TYPE</value>
+        <comment>restaurant type label</comment>
+    </data>
+     <data name="RestaurantAddressLabel" xml:space="preserve">
+        <value>ADDRESS</value>
+        <comment>restaurant address label</comment>
+    </data>
+     <data name="RestaurantPhoneLabel" xml:space="preserve">
+        <value>PHONE</value>
+        <comment>restaurant name label</comment>
+    </data>
+     <data name="RestaurantDescriptionLabel" xml:space="preserve">
+        <value>DESCRIPTION</value>
+        <comment>restaurant description label</comment>
+    </data>
+     <data name="RestaurantNameTextFieldPlaceholder" xml:space="preserve">
+        <value>Fill in the restaurant name</value>
+        <comment>restaurant name text field placeholder</comment>
+    </data>
+    <data name="RestaurantTypeTextFieldPlaceholder" xml:space="preserve">
+        <value>Fill in the restaurant type</value>
+        <comment>restaurant type text field placeholder</comment>
+    </data> 
+    <data name="RestaurantAddressTextFieldPlaceholder" xml:space="preserve">
+        <value>Fill in the restaurant address</value>
+        <comment>restaurant address text field placeholder</comment>
+    </data> 
+    <data name="RestaurantPhoneTextFieldPlaceholder" xml:space="preserve">
+        <value>Fill in the restaurant phone number</value>
+        <comment>restaurant phone text field placeholder</comment>
+    </data> 
+    <data name="RestaurantDescriptionTextViewPlaceholder" xml:space="preserve">
+        <value>A great restaurant to try out</value>
+        <comment>restaurant  description text view placeholder</comment>
+    </data>
+     <data name="NumbersOnlyWarning" xml:space="preserve">
+        <value>The phone number should contain numbers only.</value>
+        <comment>numbers only warning</comment>
+    </data>
+     <data name="AddedRestaurantWarning" xml:space="preserve">
+        <value> restaurant has been added.</value>
+        <comment>added restaurant warning</comment>
+    </data>
+     <data name="Success" xml:space="preserve">
+        <value>Success!</value>
+        <comment>success</comment>
+    </data>
+     <data name="EmptyFieldsWarning" xml:space="preserve">
+        <value>We can't proceed because at least one of the fields or the photo is blank.Please note that all fields are required.</value>
+        <comment>empty fields warning</comment>
+    </data>
+     <data name="ChoosingPhotoSource" xml:space="preserve">
+        <value>Choose your photo source</value>
+        <comment>choosing photo source</comment>
+    </data>
+    <data name="Camera" xml:space="preserve">
+        <value>Camera</value>
+        <comment>camera</comment>
+    </data>
+     <data name="PhotoLibrary" xml:space="preserve">
+        <value>Photo Library</value>
+        <comment>photo library</comment>
+    </data>
+     <data name="Cancel" xml:space="preserve">
+        <value>Cancel</value>
+        <comment>cancel</comment>
+    </data>
+     <data name="CheckInWarning" xml:space="preserve">
+        <value>Just checking in at </value>
+        <comment>check in warning</comment>
+    </data>  
+</root>
