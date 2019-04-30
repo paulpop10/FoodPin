@@ -1,7 +1,10 @@
-﻿using FoodPin.Controller;
+﻿using System;
+using System.Linq;
+using FoodPin.Controller;
 using FoodPin.Model;
 using FoodPin.View;
 using Foundation;
+using ObjCRuntime;
 using UIKit;
 
 namespace FoodPin
@@ -27,6 +30,11 @@ namespace FoodPin
             TabBarCustomization();
             Localization();
             return true;
+        }
+
+        public override void PerformActionForShortcutItem(UIApplication application, UIApplicationShortcutItem shortcutItem, UIOperationHandler completionHandler)
+        {
+            completionHandler(HandleQuickAction(shortcutItem));
         }
 
         public override void OnResignActivation(UIApplication application)
@@ -77,6 +85,88 @@ namespace FoodPin
         {
             var localize = new Localize();
             AppResources.Culture = localize.GetCurrentCultureInfo();
+        }
+
+        private string RetrieveQuickActionsShortNames(string fullIdentifier)
+        {
+            var shortcutIdentifier = fullIdentifier.Split('.').Last();
+            if (shortcutIdentifier != null)
+            {
+                return shortcutIdentifier;
+            }
+
+            return null;
+        }
+
+        private bool HandleQuickAction(UIApplicationShortcutItem shortcutItem)
+        {
+            var shortcutType = shortcutItem.Type;
+            var shortcutIdentifier = RetrieveQuickActionsShortNames(shortcutType);
+            if (shortcutIdentifier == null)
+            {
+                return false;
+            }
+
+            var tabBarController = Window?.RootViewController as UITabBarController;
+            if (tabBarController == null)
+            {
+                return false;
+            }
+
+            switch (shortcutIdentifier)
+            {
+                case "OpenFavorites":
+                    tabBarController.SelectedIndex = 0;
+                    DismissAddRestaurantViewController();
+                    break;
+                case "OpenDiscover":
+                    tabBarController.SelectedIndex = 1;
+                    DismissAddRestaurantViewController();   
+                    break;
+                case "NewRestaurant":
+                    var navController = tabBarController.ViewControllers?[0];
+                    if (navController != null)
+                    {
+                        var restaurantTableViewController = navController.ChildViewControllers[0];
+                        restaurantTableViewController.PerformSegue("addRestaurant", restaurantTableViewController);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+
+            return true;
+        }
+
+        private UIViewController RetrieveCurrentShownViewController()
+        {
+            var window = UIApplication.SharedApplication.KeyWindow;
+            var viewController = window.RootViewController;
+            while (viewController.PresentedViewController != null)
+            {
+                viewController = viewController.PresentedViewController;
+            }
+
+            if (viewController is UINavigationController navigationController)
+            {
+                viewController = navigationController.ViewControllers.Last();
+            }
+
+            return viewController;
+        }
+
+        private void DismissAddRestaurantViewController()
+        {
+            var currentShownViewController = RetrieveCurrentShownViewController();
+            if (currentShownViewController is AddRestaurantTableViewController)
+            {
+                currentShownViewController.DismissViewController(true, null);
+            }
         }
     }
 }

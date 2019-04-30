@@ -36,6 +36,7 @@ namespace FoodPin
             CustomizeTableView();
             CreateSearchBar();
             DefinesPresentationContext = true;
+            CreateQuickActions();
         }
 
         public override void ViewWillAppear(bool animated)
@@ -43,6 +44,7 @@ namespace FoodPin
             base.ViewWillAppear(animated);
             RetrieveRestaurantsList();
             SetEmptyTableViewBackground();
+            EnablePeekAndPop();
             if (NavigationController != null)
             {
                 NavigationController.HidesBarsOnSwipe = true;
@@ -53,7 +55,11 @@ namespace FoodPin
 
         public override void ViewWillDisappear(bool animated)
         {
-            _searchController.SearchBar.Hidden = true;
+            if (_searchController != null && _searchController.SearchBar != null)
+            {
+                _searchController.SearchBar.Hidden = true;
+            }
+
             base.ViewWillDisappear(animated);
         }
 
@@ -278,6 +284,29 @@ namespace FoodPin
             if (TableView.BackgroundView != null)
             {
                 TableView.BackgroundView.Hidden = true;
+            }
+        }
+
+        private void CreateQuickActions()
+        {
+            if (TraitCollection.ForceTouchCapability == UIForceTouchCapability.Available)
+            {
+                var bundleIdentifier = NSBundle.MainBundle.BundleIdentifier;
+                if (bundleIdentifier != null)
+                {
+                    var shortcutItem1 = new UIApplicationShortcutItem("(com.companyname.FoodPinn).OpenFavorites", "Show Favorites", null, UIApplicationShortcutIcon.FromTemplateImageName("favorite"), null);
+                    var shortcutItem2 = new UIApplicationShortcutItem("(com.companyname.FoodPinn).OpenDiscover", "Discover Restaurants", null, UIApplicationShortcutIcon.FromTemplateImageName("discover"), null);
+                    var shortcutItem3 = new UIApplicationShortcutItem("(com.companyname.FoodPinn).NewRestaurant", "New Restaurant", null, UIApplicationShortcutIcon.FromType(UIApplicationShortcutIconType.Add), null);
+                    UIApplication.SharedApplication.ShortcutItems = new[] { shortcutItem1, shortcutItem2, shortcutItem3 };
+                }
+            }
+        }
+
+        private void EnablePeekAndPop()
+        {
+            if (TraitCollection.ForceTouchCapability == UIForceTouchCapability.Available)
+            {
+                RegisterForPreviewingWithDelegate(new ViewControllerPreviewDelegate(this, _restaurantsMO), View);
             }
         }
         #endregion
