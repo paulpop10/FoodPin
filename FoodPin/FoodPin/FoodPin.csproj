@@ -455,6 +455,7 @@
             <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="View\ViewControllerPreviewDelegate.cs" />
+    <Compile Include="View\UserNotificationCenterDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Fonts\OFL.txt" />

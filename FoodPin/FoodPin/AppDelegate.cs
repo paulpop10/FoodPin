@@ -6,6 +6,7 @@ using FoodPin.View;
 using Foundation;
 using ObjCRuntime;
 using UIKit;
+using UserNotifications;
 
 namespace FoodPin
 {
@@ -29,6 +30,8 @@ namespace FoodPin
             SetBackButtonOnNavigationBar();
             TabBarCustomization();
             Localization();
+            AskingForUserPermissions();
+            UNUserNotificationCenter.Current.Delegate = new UserNotificationCenterDelegate();
             return true;
         }
 
@@ -166,6 +169,23 @@ namespace FoodPin
             if (currentShownViewController is AddRestaurantTableViewController)
             {
                 currentShownViewController.DismissViewController(true, null);
+            }
+        }
+
+        private void AskingForUserPermissions()
+        {       
+            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound | UNAuthorizationOptions.Badge, CompletionHandler);
+        }
+
+        private void CompletionHandler(bool granted, NSError error)
+        {
+            if (granted)
+            {
+                Console.WriteLine("User notifications are allowed");
+            }
+            else
+            {
+                Console.WriteLine("User notifications are not allowed");
             }
         }
     }
