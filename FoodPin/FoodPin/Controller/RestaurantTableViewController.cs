@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using CoreSpotlight;
 using FoodPin.Controller;
@@ -9,6 +11,7 @@ using FoodPin.Model;
 using FoodPin.View;
 using Foundation;
 using UIKit;
+using UserNotifications;
 
 namespace FoodPin
 {
@@ -45,6 +48,7 @@ namespace FoodPin
             RetrieveRestaurantsList();
             SetEmptyTableViewBackground();
             EnablePeekAndPop();
+            PrepareNotification();
             if (NavigationController != null)
             {
                 NavigationController.HidesBarsOnSwipe = true;
@@ -92,6 +96,7 @@ namespace FoodPin
                  _dataBaseConnection.Conn.Table<RestaurantMO>().Delete(x => x.Id == restaurantId);
                  _restaurantsMO.RemoveAt(indexPath.Row);
                  TableView.ReloadData();
+                 PrepareNotification();
                  SetEmptyTableViewBackground();
                  completionHandler(true);
              });
@@ -308,6 +313,84 @@ namespace FoodPin
             {
                 RegisterForPreviewingWithDelegate(new ViewControllerPreviewDelegate(this, _restaurantsMO), View);
             }
+        }
+
+        private void PrepareNotification()
+        {
+            if (_restaurantsMO.Count <= 0)
+            {
+                return;
+            }
+
+            var randomNum = new Random().Next(0, _restaurantsMO.Count);
+            var suggestedRestaurant = _restaurantsMO[randomNum];
+            var content = new UNMutableNotificationContent();
+
+            CreateNotificationContent(content, suggestedRestaurant);
+            AddingPhotoToNotification(suggestedRestaurant, content);
+            CreateNotificationCustomActions(content);
+            var trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(10, false);
+            var request = UNNotificationRequest.FromIdentifier("foodpin.restaurantsuggestion", content, trigger);
+            UNUserNotificationCenter.Current.AddNotificationRequest(request, null);
+        }
+
+        private void CreateNotificationContent(UNMutableNotificationContent content, RestaurantMO restaurantMO)
+        {
+            content.Title = "Restaurant Recommendation";
+            content.Subtitle = "Try new food today";
+            content.Body = "I recommend you to check out " + restaurantMO.Name + ".The restaurant is one of your favorites. It is located at " + restaurantMO.Location + " .Would you like to give it a try?";
+            content.Sound = UNNotificationSound.Default;
+            NSDictionary userInfo = new NSDictionary("phone", restaurantMO.Phone);
+            content.UserInfo = userInfo;
+        }
+
+        private void AddingPhotoToNotification(RestaurantMO restaurantMO, UNMutableNotificationContent content)
+        {
+            var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var suggestedRestaurantImage = Path.Combine(documents, "suggested-restaurant.jpg");
+
+            var image = restaurantMO.GetImage();
+            if (image != null)
+            {
+                try
+                {
+                    NSError err = null;
+                    image.AsJPEG(1)?.Save(suggestedRestaurantImage, false, out err);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+                try
+                {
+                    NSError error;
+                    UNNotificationAttachmentOptions attachmentOptions = new UNNotificationAttachmentOptions();
+                    var finalImage = "file:///" + suggestedRestaurantImage;
+                    var restaurantImage = UNNotificationAttachment.FromIdentifier("restaurantImage", new NSUrl(finalImage), attachmentOptions, out error);
+                    if (restaurantImage != null)
+                    {
+                        content.Attachments = new[] { restaurantImage };
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+
+        private void CreateNotificationCustomActions(UNMutableNotificationContent content)
+        {
+            var categoryIdentifier = "foodpin.restaurantaction";
+            var makeReservationAction = UNNotificationAction.FromIdentifier("foodpin.makeReservation", "Reserve a table", UNNotificationActionOptions.Foreground);
+            var cancelAction = UNNotificationAction.FromIdentifier("foodpin.cancel", "Later", UNNotificationActionOptions.None);
+            UNNotificationAction[] actions = new UNNotificationAction[] { makeReservationAction, cancelAction };
+            string[] intentIdentifiers = new string[] { };
+            UNNotificationCategoryOptions notificationCategoryOptions = new UNNotificationCategoryOptions();
+            var category = UNNotificationCategory.FromIdentifier(categoryIdentifier, actions, intentIdentifiers, notificationCategoryOptions);
+            UNUserNotificationCenter.Current.SetNotificationCategories(new NSSet<UNNotificationCategory>(category));
+            content.CategoryIdentifier = categoryIdentifier;
         }
         #endregion
     }
